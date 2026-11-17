@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scenarios.schema.json",
+  "title": "Scenarios (SPEC section 3)",
+  "type": "object",
+  "required": [
+    "scenarios"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "description",
+          "referenceProfileId",
+          "mealShare"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "$ref": "#/$defs/localisedText"
+          },
+          "description": {
+            "$ref": "#/$defs/localisedText"
+          },
+          "referenceProfileId": {
+            "type": "string"
+          },
+          "mealShare": {
+            "type": "object",
+            "required": [
+              "value",
+              "source",
+              "assumption"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "value": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              },
+              "source": {
+                "$ref": "#/$defs/sourceRef"
+              },
+              "assumption": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "description": "Citation for a stored value. 'locator' is the table, page or clause.",
+      "required": [
+        "citation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "citation": {
+          "type": "string",
+          "minLength": 10
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "localisedText": {
+      "type": "object",
+      "required": [
+        "es",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

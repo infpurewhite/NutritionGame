@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "local-names.schema.json",
+  "title": "Spanish and local food names, held here until the dataset carries them (SPEC section 7)",
+  "type": "object",
+  "required": [
+    "notice",
+    "names"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "notice": {
+      "type": "string",
+      "minLength": 1
+    },
+    "names": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "es"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "es": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

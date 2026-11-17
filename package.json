@@ -1,0 +1,32 @@
+{
+  "name": "nutrition-game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plate-builder game teaching balanced plates from Andean ingredients (prototype).",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:fixture": "vite --mode fixture",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "data:validate": "node build/validate-cli.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "preact": "11.2.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "2.10.6",
+    "@types/node": "22.20.5",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  }
+}

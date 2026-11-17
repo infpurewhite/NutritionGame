@@ -1,0 +1,21 @@
+{
+  "note": "Design assumptions pending sign-off, not nutrition reference values. Energy is on target within +/- 10% of the meal target; the other four nutrients are on target at or above it and are never marked 'over', because no sourced meal-level upper limit is stored.",
+  "bands": {
+    "energy": {
+      "kind": "range",
+      "tolerance": 0.1
+    },
+    "protein": {
+      "kind": "at_least"
+    },
+    "fibre": {
+      "kind": "at_least"
+    },
+    "iron": {
+      "kind": "at_least"
+    },
+    "calcium": {
+      "kind": "at_least"
+    }
+  }
+}

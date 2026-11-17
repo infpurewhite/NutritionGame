@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scoring.schema.json",
+  "title": "Scoring bands: game-design parameters, not nutrition reference values",
+  "type": "object",
+  "required": [
+    "note",
+    "bands"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bands": {
+      "type": "object",
+      "required": [
+        "energy",
+        "protein",
+        "fibre",
+        "iron",
+        "calcium"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "energy": {
+          "$ref": "#/$defs/band"
+        },
+        "protein": {
+          "$ref": "#/$defs/band"
+        },
+        "fibre": {
+          "$ref": "#/$defs/band"
+        },
+        "iron": {
+          "$ref": "#/$defs/band"
+        },
+        "calcium": {
+          "$ref": "#/$defs/band"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "band": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "at_least"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "tolerance"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "range"
+            },
+            "tolerance": {
+              "type": "number",
+              "minimum": 0,
+              "exclusiveMaximum": 1
+            }
+          }
+        }
+      ]
+    }
+  }
+}

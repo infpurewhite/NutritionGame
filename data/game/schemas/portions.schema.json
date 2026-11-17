@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "portions.schema.json",
+  "title": "Portion layer: serving size and cooked-yield factor per food (SPEC section 6)",
+  "type": "object",
+  "required": [
+    "portions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "portions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "servingGramsAsEaten",
+          "cookedYieldFactor",
+          "state",
+          "servingSource",
+          "yieldSource",
+          "assumption"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "servingGramsAsEaten": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "cookedYieldFactor": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "state": {
+            "enum": [
+              "cooked",
+              "uncooked"
+            ]
+          },
+          "servingSource": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "yieldSource": {
+            "$ref": "#/$defs/sourceRef"
+          },
+          "assumption": {
+            "const": true
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "description": "Citation for a stored value. 'locator' is the table, page or clause.",
+      "required": [
+        "citation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "citation": {
+          "type": "string",
+          "minLength": 10
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
