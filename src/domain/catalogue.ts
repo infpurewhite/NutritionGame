@@ -77,8 +77,9 @@ export function classifyCrop(
  * Build the food catalogue from normalised crops plus the game-side layers.
  *
  * Fails when a crop has no Spanish name, when a playable crop has no sourced
- * portion (SPEC section 6: unsourced factors are not allowed), or when a
- * portion or name refers to a crop that is not in the dataset.
+ * portion (SPEC section 6: unsourced factors are not allowed), when a crop
+ * flagged as not eaten raw is given an uncooked portion, or when a portion or
+ * name refers to a crop that is not in the dataset.
  */
 export function buildCatalogue(
   crops: readonly CropRecord[],
@@ -122,6 +123,10 @@ export function buildCatalogue(
       issues.push(
         `playable crop "${crop.id}" has no sourced portion (serving size and cooked-yield factor)`,
       );
+      continue;
+    }
+    if (crop.notEatenRaw && portion.state === 'uncooked') {
+      issues.push(`crop "${crop.id}" is flagged as not eaten raw but its portion is uncooked`);
       continue;
     }
     foods.push({

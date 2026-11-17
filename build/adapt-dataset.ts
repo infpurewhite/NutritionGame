@@ -2,27 +2,64 @@
  * Adapter from the andean-crops dataset JSON to the game's normalised crop
  * records. This is the only module that knows the dataset's field names.
  *
- * NOT IMPLEMENTED. The dataset snapshot could not be read when the first
- * milestone was started, so no field name here would be more than a guess.
- * Write this against the real v0.3.0 file and its schema once the snapshot is
- * in `data/andean-crops/`. It must:
- *
- * - return the dataset's own version string;
- * - convert each scored nutrient to game units (kcal, g, g, mg, mg), keeping a
- *   missing value as `null`, never 0;
- * - copy the verification level(s) of the scored values verbatim;
- * - set `isProxy` from the dataset's proxy-match field.
+ * The input must already have passed `consumer-contract.schema.json`, which
+ * also fixes the units (kcal, g, g, mg, mg), so no conversion is done here.
  */
-import type { CropRecord } from '../src/domain/types.ts';
+import { NUTRIENT_IDS } from '../src/domain/types.ts';
+import type { CropRecord, NutrientId } from '../src/domain/types.ts';
+
+/** The subset of the dataset file that the game reads. */
+interface DatasetFile {
+  readonly metadata: { readonly title: string; readonly version: string };
+  readonly crops: readonly {
+    readonly id: string;
+    readonly names: { readonly common: string };
+    readonly composition: {
+      readonly match?: 'direct' | 'proxy' | 'unknown';
+      readonly values: Readonly<
+        Record<string, { readonly value: number; readonly verification: string } | undefined>
+      >;
+    };
+    readonly flags: readonly { readonly code: string }[];
+  }[];
+}
 
 export interface AdaptedDataset {
+  readonly title: string;
   readonly version: string;
   readonly crops: readonly CropRecord[];
 }
 
-export function adaptDataset(_raw: unknown): AdaptedDataset {
-  throw new Error(
-    'adaptDataset is not implemented: it has to be written against the real dataset snapshot ' +
-      '(see the comment at the top of build/adapt-dataset.ts).',
-  );
+/** Dataset flag marking a food whose raw form is not eaten (tarwi). */
+const NOT_EATEN_RAW_FLAG = 'not-eaten-raw';
+
+/**
+ * Normalise the dataset. A nutrient with no entry stays `null` ("no data").
+ * Only the verification levels of the five scored nutrients are collected,
+ * because those are the only values the game uses.
+ */
+export function adaptDataset(raw: unknown): AdaptedDataset {
+  const dataset = raw as DatasetFile;
+  const crops = dataset.crops.map((crop): CropRecord => {
+    const per100gRaw = {} as Record<NutrientId, number | null>;
+    const levels = new Set<string>();
+    for (const id of NUTRIENT_IDS) {
+      const entry = crop.composition.values[id];
+      if (entry === undefined) {
+        per100gRaw[id] = null;
+      } else {
+        per100gRaw[id] = entry.value;
+        levels.add(entry.verification);
+      }
+    }
+    return {
+      id: crop.id,
+      nameEn: crop.names.common,
+      per100gRaw,
+      verificationLevels: [...levels].sort(),
+      isProxy: crop.composition.match === 'proxy',
+      notEatenRaw: crop.flags.some((flag) => flag.code === NOT_EATEN_RAW_FLAG),
+    };
+  });
+  return { title: dataset.metadata.title, version: dataset.metadata.version, crops };
 }

@@ -38,6 +38,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
     per100gRaw: { energy: 400, protein: 10, fibre: 10, iron: 10, calcium: 100 },
     verificationLevels: ['verified'],
     isProxy: false,
+    notEatenRaw: false,
   },
   {
     id: 'fixture-tuber',
@@ -45,6 +46,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
     per100gRaw: { energy: 100, protein: 2, fibre: 2, iron: 1, calcium: 10 },
     verificationLevels: ['corroborated'],
     isProxy: false,
+    notEatenRaw: false,
   },
   {
     id: 'fixture-fruit',
@@ -52,6 +54,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
     per100gRaw: { energy: 50, protein: 1, fibre: 5, iron: null, calcium: 20 },
     verificationLevels: ['corroborated'],
     isProxy: true,
+    notEatenRaw: false,
   },
   {
     id: 'fixture-legume',
@@ -59,6 +62,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
     per100gRaw: { energy: 300, protein: 20, fibre: 15, iron: 5, calcium: 80 },
     verificationLevels: ['unverified'],
     isProxy: false,
+    notEatenRaw: false,
   },
   {
     id: 'fixture-root',
@@ -66,6 +70,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
     per100gRaw: { energy: null, protein: null, fibre: null, iron: null, calcium: null },
     verificationLevels: [],
     isProxy: false,
+    notEatenRaw: false,
   },
 ];
 

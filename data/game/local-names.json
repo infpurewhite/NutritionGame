@@ -1,0 +1,95 @@
+{
+  "notice": "TEMPORARY: Spanish and local food names belong in the andean-crops dataset as fields shared by both projects (SPEC section 7). Until the dataset carries a language-tagged name, they are kept in this one file. Every name here is taken from that crop's own names.common or names.alternative list in the dataset. Remove this file when the dataset provides them.",
+  "names": {
+    "quinoa": {
+      "es": "quinua"
+    },
+    "kiwicha": {
+      "es": "kiwicha"
+    },
+    "canihua": {
+      "es": "cañihua"
+    },
+    "tarwi": {
+      "es": "tarwi"
+    },
+    "maca": {
+      "es": "maca"
+    },
+    "purple-corn": {
+      "es": "maíz morado"
+    },
+    "mashua": {
+      "es": "mashua"
+    },
+    "oca": {
+      "es": "oca"
+    },
+    "potato": {
+      "es": "papa"
+    },
+    "ulluco": {
+      "es": "olluco"
+    },
+    "yacon": {
+      "es": "yacón"
+    },
+    "arracacha": {
+      "es": "arracacha"
+    },
+    "achira": {
+      "es": "achira"
+    },
+    "chuno": {
+      "es": "chuño"
+    },
+    "lima-bean": {
+      "es": "pallar"
+    },
+    "common-bean": {
+      "es": "frijol"
+    },
+    "peanut": {
+      "es": "maní"
+    },
+    "cape-gooseberry": {
+      "es": "aguaymanto"
+    },
+    "cherimoya": {
+      "es": "chirimoya"
+    },
+    "lucuma": {
+      "es": "lúcuma"
+    },
+    "tree-tomato": {
+      "es": "tomate de árbol"
+    },
+    "pepino-dulce": {
+      "es": "pepino dulce"
+    },
+    "granadilla": {
+      "es": "granadilla"
+    },
+    "tumbo": {
+      "es": "tumbo"
+    },
+    "naranjilla": {
+      "es": "naranjilla"
+    },
+    "pacay": {
+      "es": "pacay"
+    },
+    "mora": {
+      "es": "mora de Castilla"
+    },
+    "sauco": {
+      "es": "sauco"
+    },
+    "aji-amarillo": {
+      "es": "ají amarillo"
+    },
+    "rocoto": {
+      "es": "rocoto"
+    }
+  }
+}

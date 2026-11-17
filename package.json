@@ -13,6 +13,7 @@
     "dev:fixture": "vite --mode fixture",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
+    "data:sync": "node scripts/sync-dataset.ts",
     "data:validate": "node build/validate-cli.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"

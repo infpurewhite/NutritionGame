@@ -44,6 +44,8 @@ export interface CropRecord {
   readonly verificationLevels: readonly string[];
   /** True when the dataset marks the values as a proxy match. */
   readonly isProxy: boolean;
+  /** True when the dataset flags the raw food as not eaten (tarwi: toxic raw seed). */
+  readonly notEatenRaw: boolean;
 }
 
 /** How a food is eaten. SPEC section 6: every factor is a sourced assumption. */

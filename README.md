@@ -10,15 +10,14 @@ For research and teaching, not dietary or medical advice.
 
 | Item | State |
 | --- | --- |
+| Dataset snapshot copied, validated and loaded (v0.3.0) | Done, tested on the real file |
+| Playable/locked derivation from verification levels | Done: 9 playable, 6 unverified, 15 without values |
 | Scoring on the five nutrients, with "no data" handling | Done, tested |
-| Playable/locked derivation from verification levels | Done, tested |
 | Portion layer (as-eaten serving from raw per-100 g values) | Logic done, tested; factors not yet sourced |
-| Spanish and English string tables | Done, tested |
-| Build-time validation of the dataset and game data | Done, tested |
-| Dataset snapshot copied into the repo | **Pending** |
-| Dataset adapter (`build/adapt-dataset.ts`) | **Pending**: needs the snapshot |
+| Spanish and English string tables, Spanish food names | Done, tested |
 | FAO/WHO reference intakes with citations | **Pending**: not yet verified against the sources |
-| Scenario, Spanish food names | **Pending** |
+| Serving sizes and cooked-yield factors with sources | **Pending** |
+| Scenario | **Pending** |
 | GitHub Pages deployment | Workflow written; runs on `main` once the build passes |
 
 `npm run build` fails until every pending data file is present and valid.
@@ -51,11 +50,20 @@ npm run data:validate
 
 `data:validate` runs the build-time data checks alone and lists what is missing.
 
+```bash
+npm run data:sync
+```
+
+`data:sync` downloads the dataset named in `data/andean-crops/PIN.json` and
+compares its sha256 with the pin. It writes nothing when they differ, unless
+run as `npm run data:sync -- --update-pin`. Behind an HTTP proxy, set
+`NODE_USE_ENV_PROXY=1`.
+
 ## How the data flows
 
 ```
 data/andean-crops/andean-crops.json         pinned dataset snapshot (copied, never fetched at run time)
-data/andean-crops/andean-crops.schema.json  its JSON Schema
+data/andean-crops/consumer-contract.schema.json  the fields and units the game relies on
 data/andean-crops/PIN.json                  name, version, source URL, sha256, retrieval date
 data/game/reference-intakes.json            daily reference intakes, each with its citation
 data/game/portions.json                     serving size and cooked-yield factor per food, each sourced
@@ -68,11 +76,18 @@ data/game/schemas/                          JSON Schemas for the files above
 virtual:game-data                           validated bundle imported by the app
 ```
 
+The snapshot is validated against `consumer-contract.schema.json`, written in
+this repository. It is not the dataset's own schema: the dataset file refers to
+`./andean-crops.schema.json`, but that file is not published next to it. Swap
+in the upstream schema when it is available.
+
 The build fails when:
 
 - the snapshot does not match its schema, or its sha256 differs from `PIN.json`;
 - a reference intake has no citation, or a portion factor has no source or is not flagged as an assumption;
+- the dataset reports a scored nutrient in another unit than kcal, g, g, mg, mg;
 - a playable crop has no sourced portion, or a crop has no Spanish name;
+- a crop the dataset flags as not eaten raw (tarwi) is given an uncooked portion;
 - a crop carries a verification level the code does not know.
 
 ## Rules the code enforces
@@ -97,6 +112,7 @@ src/domain/   pure logic: types, catalogue, portions, scoring
 src/i18n/     string tables
 src/ui/       Preact components
 build/        build-time data loading, validation and the Vite plugin
+scripts/      dataset sync
 data/         dataset snapshot and game data files
 tests/        Vitest tests and the synthetic fixture
 ```

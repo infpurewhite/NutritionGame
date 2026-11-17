@@ -19,7 +19,14 @@ const NO_VALUES: NutrientValues = {
 };
 
 function crop(verificationLevels: string[], per100gRaw: NutrientValues = VALUES): CropRecord {
-  return { id: 'x', nameEn: 'X', per100gRaw, verificationLevels, isProxy: false };
+  return {
+    id: 'x',
+    nameEn: 'X',
+    per100gRaw,
+    verificationLevels,
+    isProxy: false,
+    notEatenRaw: false,
+  };
 }
 
 describe('classifyCrop', () => {

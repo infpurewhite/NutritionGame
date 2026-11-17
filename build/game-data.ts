@@ -28,7 +28,7 @@ import { adaptDataset } from './adapt-dataset.ts';
 /** Repository-relative paths of every build input. */
 export const DATA_PATHS = {
   dataset: 'data/andean-crops/andean-crops.json',
-  datasetSchema: 'data/andean-crops/andean-crops.schema.json',
+  datasetSchema: 'data/andean-crops/consumer-contract.schema.json',
   pin: 'data/andean-crops/PIN.json',
   referenceIntakes: 'data/game/reference-intakes.json',
   portions: 'data/game/portions.json',

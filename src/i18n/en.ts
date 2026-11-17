@@ -15,7 +15,7 @@ export const en = {
   'foods.portion': 'One portion: {grams} g, {state}',
   'foods.state.cooked': 'cooked',
   'foods.state.uncooked': 'uncooked',
-  'foods.proxyNote': 'Proxy value',
+  'foods.proxyNote': 'Proxy value: the source food is a close match, not this exact crop.',
   'foods.add': 'Add a portion of {food}',
   'foods.remove': 'Remove a portion of {food}',
   'foods.onPlate': '{count} on the plate',

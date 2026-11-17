@@ -18,7 +18,8 @@ export const es: Readonly<Record<StringKey, string>> = {
   'foods.portion': 'Una porción: {grams} g, {state}',
   'foods.state.cooked': 'cocido',
   'foods.state.uncooked': 'sin cocer',
-  'foods.proxyNote': 'Valor aproximado (proxy)',
+  'foods.proxyNote':
+    'Valor proxy: el alimento de la fuente es parecido, no exactamente este cultivo.',
   'foods.add': 'Agregar una porción de {food}',
   'foods.remove': 'Quitar una porción de {food}',
   'foods.onPlate': '{count} en el plato',
