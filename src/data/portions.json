@@ -1,0 +1,122 @@
+{
+  "_methodology": "Dataset nutrient values are per 100 g edible portion in a raw state (dry seed, fresh tuber or fresh fruit). To score as-eaten portions, each playable food defines an as-eaten serving weight (servingGrams) and a cooked-yield factor (cookedWeight / rawWeight). Raw equivalent grams = servingGrams / cookedYieldFactor. Nutrient retention is assumed to be 1.0 (no cooking loss adjustment) for energy, protein, fibre, iron and calcium, following Bognár (2002) preliminary guidance where specific retention data are absent. Every factor below is explicitly flagged as an assumption.",
+  "portions": {
+    "quinoa": {
+      "servingGrams": 140,
+      "cookedYieldFactor": 3.06,
+      "preparedState": { "en": "cooked (boiled)", "es": "cocida (hervida)" },
+      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Grains, e.g. rice, barley, plain): RACC = 140 g prepared (45 g dry).",
+      "yieldSource": "Derived from USDA FoodData Central SR Legacy: Quinoa, uncooked (FDC 168874, 368 kcal/100 g, 13.3% water) vs Quinoa, cooked (FDC 168917, 120 kcal/100 g, 71.6% water); mass yield factor = 3.06.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes boiled grain water absorption (3.06×) and 100% mineral/macronutrient retention.",
+        "es": "Asume absorción de agua al hervir (3,06×) y 100 % de retención de nutrientes."
+      }
+    },
+    "kiwicha": {
+      "servingGrams": 140,
+      "cookedYieldFactor": 3.64,
+      "preparedState": { "en": "cooked (boiled)", "es": "cocida (hervida)" },
+      "householdMeasure": { "en": "~⅔ cup cooked", "es": "~⅔ taza cocida" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Grains, plain): RACC = 140 g prepared.",
+      "yieldSource": "Derived from USDA FoodData Central SR Legacy: Amaranth grain, uncooked (NDB 20001, 371 kcal/100 g, 11.3% water) vs Amaranth grain, cooked (NDB 20002, 102 kcal/100 g, 75.2% water); mass yield factor = 3.64.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes boiled amaranth grain yield (3.64×) and 100% nutrient retention; popped kiwicha has a different density.",
+        "es": "Asume rendimiento de grano hervido (3,64×) y 100 % de retención; la kiwicha pop tiene otra densidad."
+      }
+    },
+    "potato": {
+      "servingGrams": 110,
+      "cookedYieldFactor": 1.0,
+      "preparedState": { "en": "boiled", "es": "sancochada" },
+      "householdMeasure": { "en": "1 small-medium boiled potato", "es": "1 papa mediana sancochada" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Potatoes, plain, fresh/boiled): RACC = 110 g.",
+      "yieldSource": "Bognár, A. (2002). Tables on weight yield of food and retention factors of food constituents (BFE-R-02-03), Table 1: Potatoes boiled in water, weight yield factor ≈ 1.00.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes boiled without added fat (yield 1.0×) and 100% retention of scored nutrients.",
+        "es": "Asume cocción sancochada sin aceite (rendimiento 1,0×) y 100 % de retención."
+      }
+    },
+    "lima-bean": {
+      "servingGrams": 130,
+      "cookedYieldFactor": 2.94,
+      "preparedState": { "en": "cooked (boiled)", "es": "cocido (hervido)" },
+      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g.",
+      "yieldSource": "Derived from USDA FoodData Central SR Legacy: Lima beans, large, mature seeds, raw (338 kcal/100 g) vs cooked, boiled without salt (115 kcal/100 g); mass yield factor = 2.94.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes dried seeds soaked and boiled (2.94×) with 100% nutrient retention.",
+        "es": "Asume granos secos remojados y hervidos (2,94×) con 100 % de retención."
+      }
+    },
+    "common-bean": {
+      "servingGrams": 130,
+      "cookedYieldFactor": 2.64,
+      "preparedState": { "en": "cooked (boiled)", "es": "cocido (hervido)" },
+      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g.",
+      "yieldSource": "Derived from USDA FoodData Central SR Legacy: Beans, kidney, all types, mature seeds, raw (335 kcal/100 g) vs cooked, boiled without salt (127 kcal/100 g); mass yield factor = 2.64 (consistent with Bognár 2002 boiled dried beans 2.5–2.7).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes dried beans soaked and boiled (2.64×) with 100% nutrient retention.",
+        "es": "Asume frijoles secos remojados y hervidos (2,64×) con 100 % de retención."
+      }
+    },
+    "peanut": {
+      "servingGrams": 30,
+      "cookedYieldFactor": 0.95,
+      "preparedState": { "en": "dry-roasted", "es": "tostado" },
+      "householdMeasure": { "en": "1 small handful (~30 g)", "es": "1 puñado pequeño (~30 g)" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Nuts and seeds, all types): RACC = 30 g.",
+      "yieldSource": "Derived from USDA FoodData Central SR Legacy moisture change for raw (6.5% water) vs dry-roasted peanuts (1.8% water): (100 - 6.5) / (100 - 1.8) = 0.95 (consistent with Bognár 2002 dry roasting).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes dry-roasted without added oil (yield 0.95×) and 100% nutrient retention.",
+        "es": "Asume tostado en seco sin aceite añadido (rendimiento 0,95×) y 100 % de retención."
+      }
+    },
+    "cherimoya": {
+      "servingGrams": 140,
+      "cookedYieldFactor": 1.0,
+      "preparedState": { "en": "fresh edible pulp", "es": "pulpa fresca" },
+      "householdMeasure": { "en": "~1 cup fresh pulp", "es": "~1 taza de pulpa fresca" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
+      "yieldSource": "Eaten raw/fresh without thermal processing; cooked-yield factor = 1.00.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes fresh edible flesh only (skin and seeds excluded), no cooking loss (1.0×).",
+        "es": "Asume solo pulpa comestible fresca (sin cáscara ni semillas), sin cocción (1,0×)."
+      }
+    },
+    "naranjilla": {
+      "servingGrams": 140,
+      "cookedYieldFactor": 1.0,
+      "preparedState": { "en": "fresh edible pulp", "es": "pulpa fresca" },
+      "householdMeasure": { "en": "~2 medium fruits (pulp)", "es": "~2 frutos medianos (pulpa)" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
+      "yieldSource": "Eaten raw/fresh or blended without cooking; cooked-yield factor = 1.00.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes fresh edible pulp without added sugar (yield 1.0×).",
+        "es": "Asume pulpa fresca sin azúcar añadida (rendimiento 1,0×)."
+      }
+    },
+    "cape-gooseberry": {
+      "servingGrams": 140,
+      "cookedYieldFactor": 1.0,
+      "preparedState": { "en": "fresh whole berries", "es": "fruto fresco" },
+      "householdMeasure": { "en": "~1 cup fresh berries", "es": "~1 taza de frutos frescos" },
+      "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
+      "yieldSource": "Eaten raw/fresh without cooking; cooked-yield factor = 1.00.",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Assumes fresh husked berries eaten raw (yield 1.0×).",
+        "es": "Asume frutos frescos sin cáliz consumidos crudos (rendimiento 1,0×)."
+      }
+    }
+  }
+}

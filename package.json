@@ -1,0 +1,29 @@
+{
+  "name": "nutrition-game",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An educational plate-builder game using Andean crops and FAO/WHO reference intakes.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "validate:dataset": "node scripts/validate-dataset.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run validate:dataset && npm run typecheck && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "preact": "^10.25.4"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.3",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^3.0.5"
+  }
+}
