@@ -1,0 +1,39 @@
+{
+  "profileId": "fao-who-adult-woman-19-50",
+  "profileLabel": {
+    "en": "Adult woman (19–50 y, 60 kg reference, moderately active)",
+    "es": "Mujer adulta (19–50 años, 60 kg de referencia, actividad moderada)"
+  },
+  "nutrients": {
+    "energy": {
+      "dailyTarget": 2333,
+      "unit": "kcal",
+      "source": "FAO/WHO/UNU (2004). Human energy requirements. Report of a Joint FAO/WHO/UNU Expert Consultation, Rome, 17–24 October 2001. FAO Food and Nutrition Technical Report Series 1, Chapter 5, Tables 5.2 & 5.3. Calculated with Schofield BMR equation for females 30–60 y (8.126 × 60 kg + 845.6 = 1333.2 kcal/d) × PAL 1.75 (moderately active).",
+      "url": "https://www.fao.org/4/y5686e/y5686e.pdf"
+    },
+    "protein": {
+      "dailyTarget": 49.8,
+      "unit": "g",
+      "source": "WHO/FAO/UNU (2007). Protein and amino acid requirements in human nutrition. Report of a Joint WHO/FAO/UNU Expert Consultation. WHO Technical Report Series 935, Section 14, Table 46: Adult safe level of protein intake = 0.83 g/kg body weight/day (0.83 × 60 kg = 49.8 g/day).",
+      "url": "https://iris.who.int/handle/10665/43411"
+    },
+    "fibre": {
+      "dailyTarget": 25,
+      "unit": "g",
+      "source": "WHO/FAO (2003). Diet, nutrition and the prevention of chronic diseases. Report of a Joint WHO/FAO Expert Consultation. WHO Technical Report Series 916, Section 5.1, Table 6: Population nutrient intake goal for total dietary fibre > 25 g/day.",
+      "url": "https://www.who.int/publications/i/item/924120916X"
+    },
+    "iron": {
+      "dailyTarget": 29.4,
+      "unit": "mg",
+      "source": "WHO/FAO (2004). Vitamin and mineral requirements in human nutrition (2nd ed.), Chapter 13, Table 13.2 (p. 271): Recommended Nutrient Intake (RNI) for menstruating adult females (18+ y) assuming 10% dietary iron bioavailability (representative of cereal- and legume-based diets).",
+      "url": "https://www.who.int/publications/i/item/9241546123"
+    },
+    "calcium": {
+      "dailyTarget": 1000,
+      "unit": "mg",
+      "source": "WHO/FAO (2004). Vitamin and mineral requirements in human nutrition (2nd ed.), Chapter 4, Table 4.1 (p. 85): Recommended Nutrient Intake (RNI) for adult females (19–50 y, premenopausal) = 1000 mg/day.",
+      "url": "https://www.who.int/publications/i/item/9241546123"
+    }
+  }
+}

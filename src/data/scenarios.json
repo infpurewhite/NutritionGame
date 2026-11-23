@@ -1,0 +1,19 @@
+[
+  {
+    "id": "midday-lunch-adult-woman",
+    "mealFraction": 0.3333333333333333,
+    "referenceProfileId": "fao-who-adult-woman-19-50",
+    "title": {
+      "en": "Midday Andean Lunch",
+      "es": "Almuerzo Andino de Mediodía"
+    },
+    "subtitle": {
+      "en": "Build a balanced lunch targeting one-third of FAO/WHO daily reference intakes for an adult woman (19–50 y).",
+      "es": "Arma un almuerzo equilibrado apuntando a un tercio de las ingestas diarias de referencia FAO/OMS para una mujer adulta (19–50 años)."
+    },
+    "context": {
+      "en": "Combine cooked grains, tubers, legumes, nuts and fresh fruits. Watch how cooking yields and missing data affect your balance.",
+      "es": "Combina granos cocidos, tubérculos, legumbres, maní y frutas frescas. Observa cómo los rendimientos de cocción y los datos faltantes influyen en tu puntaje."
+    }
+  }
+]
