@@ -98,13 +98,25 @@ a {
 
 .badge,
 .tag {
-  display: inline-block;
   border: 1px solid var(--accent);
   color: var(--accent);
-  border-radius: 999px;
-  padding: 0 0.55rem;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0 0.55rem;
+}
+
+/* A sentence, not a pill: it has to wrap inside narrow cards. */
+.tag {
+  display: block;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  line-height: 1.35;
+  font-weight: 500;
 }
 
 .notice {
@@ -232,6 +244,11 @@ a:focus-visible {
 .food.locked {
   border-style: dashed;
   background: transparent;
+}
+
+/* Spanish names are stored in lower case; capitalise them as card titles only. */
+.food h3::first-letter {
+  text-transform: uppercase;
 }
 
 .stepper {
