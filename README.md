@@ -6,6 +6,11 @@ ingredients. Spanish and English. Design spec: [SPEC.md](SPEC.md).
 **Prototype.** A nutritionist has not yet reviewed the content.
 For research and teaching, not dietary or medical advice.
 
+This branch is **version B** of two independent implementations of the same
+spec. Version A is on `main`. Both are published side by side at
+<https://anniececy.com/plato-andino/> (a static copy in the `anniececy-web`
+repository; see `plato-andino/SOURCE.txt` there).
+
 ## Status: first milestone (SPEC section 12)
 
 | Item | State |
@@ -13,15 +18,27 @@ For research and teaching, not dietary or medical advice.
 | Dataset snapshot copied, validated and loaded (v0.3.0) | Done, tested on the real file |
 | Playable/locked derivation from verification levels | Done: 9 playable, 6 unverified, 15 without values |
 | Scoring on the five nutrients, with "no data" handling | Done, tested |
-| Portion layer (as-eaten serving from raw per-100 g values) | Logic done, tested; factors not yet sourced |
+| Portion layer (as-eaten serving from raw per-100 g values) | Done, tested |
 | Spanish and English string tables, Spanish food names | Done, tested |
-| FAO/WHO reference intakes with citations | **Pending**: not yet verified against the sources |
-| Serving sizes and cooked-yield factors with sources | **Pending** |
-| Scenario | **Pending** |
-| GitHub Pages deployment | Workflow written; runs on `main` once the build passes |
+| Reference intakes, serving sizes, cooked-yield factors, scenario | Copied from version A with their citations (see below) |
+| Deployment | Published at <https://anniececy.com/plato-andino/version-b/> |
 
-`npm run build` fails until every pending data file is present and valid.
-That is intended: the build is the gate for the spec's "do not invent values" rules.
+`npm run build` fails if any data file is missing, fails its schema, or lacks
+a source: the build is the gate for the spec's "do not invent values" rules.
+
+### Data copied from version A
+
+`data/game/reference-intakes.json`, `portions.json` and `scenarios.json` were
+copied from version A (`main` at commit `f847454`, `src/data/`), values and
+citations unchanged. Each file records this in its `provenance` field, and the
+game's About screen shows it. Points to keep in mind:
+
+- The values have not been checked independently against the cited sources.
+- The reference profile is an adult woman aged 19 to 50 (60 kg reference,
+  moderately active). Energy and protein are derived from that body weight and
+  activity level, not single published figures.
+- The meal share (lunch = one third of the daily intakes) is a design choice
+  in version A with no external source.
 
 ## Run it
 

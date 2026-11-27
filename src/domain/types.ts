@@ -55,6 +55,10 @@ export interface PortionSpec {
   /** As-eaten weight divided by raw weight. 1 for foods eaten uncooked. */
   readonly cookedYieldFactor: number;
   readonly state: 'cooked' | 'uncooked';
+  /** How the food is prepared (e.g. "boiled", "dry-roasted"); shown instead of `state`. */
+  readonly preparedState?: LocalisedText;
+  /** The serving as a household measure (e.g. "~¾ cup cooked"). */
+  readonly householdMeasure?: LocalisedText;
   readonly servingSource: SourceRef;
   readonly yieldSource: SourceRef;
   readonly assumption: true;
@@ -135,4 +139,6 @@ export interface GameData {
   readonly scenarios: readonly Scenario[];
   readonly referenceProfiles: readonly ReferenceProfile[];
   readonly scoring: ScoringConfig;
+  /** Where game data files were copied from, when they were not sourced in this repository. */
+  readonly provenance: readonly SourceRef[];
 }

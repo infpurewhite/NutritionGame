@@ -1,0 +1,188 @@
+{
+  "provenance": {
+    "citation": "Copied from version A of this game: NutritionGame, commit f847454, src/data/portions.json. Values and citations as written there; not checked independently against the original sources.",
+    "url": "https://github.com/infpurewhite/NutritionGame/blob/f847454af1c98ec31bb151622907510254bab7fe/src/data/portions.json"
+  },
+  "portions": {
+    "quinoa": {
+      "servingGramsAsEaten": 140,
+      "cookedYieldFactor": 3.06,
+      "state": "cooked",
+      "preparedState": {
+        "es": "cocida (hervida)",
+        "en": "cooked (boiled)"
+      },
+      "householdMeasure": {
+        "es": "~¾ taza cocida",
+        "en": "~¾ cup cooked"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Grains, e.g. rice, barley, plain): RACC = 140 g prepared (45 g dry)."
+      },
+      "yieldSource": {
+        "citation": "Derived from USDA FoodData Central SR Legacy: Quinoa, uncooked (FDC 168874, 368 kcal/100 g, 13.3% water) vs Quinoa, cooked (FDC 168917, 120 kcal/100 g, 71.6% water); mass yield factor = 3.06."
+      },
+      "assumption": true
+    },
+    "kiwicha": {
+      "servingGramsAsEaten": 140,
+      "cookedYieldFactor": 3.64,
+      "state": "cooked",
+      "preparedState": {
+        "es": "cocida (hervida)",
+        "en": "cooked (boiled)"
+      },
+      "householdMeasure": {
+        "es": "~⅔ taza cocida",
+        "en": "~⅔ cup cooked"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Grains, plain): RACC = 140 g prepared."
+      },
+      "yieldSource": {
+        "citation": "Derived from USDA FoodData Central SR Legacy: Amaranth grain, uncooked (NDB 20001, 371 kcal/100 g, 11.3% water) vs Amaranth grain, cooked (NDB 20002, 102 kcal/100 g, 75.2% water); mass yield factor = 3.64."
+      },
+      "assumption": true
+    },
+    "potato": {
+      "servingGramsAsEaten": 110,
+      "cookedYieldFactor": 1.0,
+      "state": "cooked",
+      "preparedState": {
+        "es": "sancochada",
+        "en": "boiled"
+      },
+      "householdMeasure": {
+        "es": "1 papa mediana sancochada",
+        "en": "1 small-medium boiled potato"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Potatoes, plain, fresh/boiled): RACC = 110 g."
+      },
+      "yieldSource": {
+        "citation": "Bognár, A. (2002). Tables on weight yield of food and retention factors of food constituents (BFE-R-02-03), Table 1: Potatoes boiled in water, weight yield factor ≈ 1.00."
+      },
+      "assumption": true
+    },
+    "lima-bean": {
+      "servingGramsAsEaten": 130,
+      "cookedYieldFactor": 2.94,
+      "state": "cooked",
+      "preparedState": {
+        "es": "cocido (hervido)",
+        "en": "cooked (boiled)"
+      },
+      "householdMeasure": {
+        "es": "~¾ taza cocida",
+        "en": "~¾ cup cooked"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g."
+      },
+      "yieldSource": {
+        "citation": "Derived from USDA FoodData Central SR Legacy: Lima beans, large, mature seeds, raw (338 kcal/100 g) vs cooked, boiled without salt (115 kcal/100 g); mass yield factor = 2.94."
+      },
+      "assumption": true
+    },
+    "common-bean": {
+      "servingGramsAsEaten": 130,
+      "cookedYieldFactor": 2.64,
+      "state": "cooked",
+      "preparedState": {
+        "es": "cocido (hervido)",
+        "en": "cooked (boiled)"
+      },
+      "householdMeasure": {
+        "es": "~¾ taza cocida",
+        "en": "~¾ cup cooked"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g."
+      },
+      "yieldSource": {
+        "citation": "Derived from USDA FoodData Central SR Legacy: Beans, kidney, all types, mature seeds, raw (335 kcal/100 g) vs cooked, boiled without salt (127 kcal/100 g); mass yield factor = 2.64 (consistent with Bognár 2002 boiled dried beans 2.5–2.7)."
+      },
+      "assumption": true
+    },
+    "peanut": {
+      "servingGramsAsEaten": 30,
+      "cookedYieldFactor": 0.95,
+      "state": "cooked",
+      "preparedState": {
+        "es": "tostado",
+        "en": "dry-roasted"
+      },
+      "householdMeasure": {
+        "es": "1 puñado pequeño (~30 g)",
+        "en": "1 small handful (~30 g)"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Nuts and seeds, all types): RACC = 30 g."
+      },
+      "yieldSource": {
+        "citation": "Derived from USDA FoodData Central SR Legacy moisture change for raw (6.5% water) vs dry-roasted peanuts (1.8% water): (100 - 6.5) / (100 - 1.8) = 0.95 (consistent with Bognár 2002 dry roasting)."
+      },
+      "assumption": true
+    },
+    "cherimoya": {
+      "servingGramsAsEaten": 140,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca",
+        "en": "fresh edible pulp"
+      },
+      "householdMeasure": {
+        "es": "~1 taza de pulpa fresca",
+        "en": "~1 cup fresh pulp"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw/fresh without thermal processing; cooked-yield factor = 1.00."
+      },
+      "assumption": true
+    },
+    "naranjilla": {
+      "servingGramsAsEaten": 140,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca",
+        "en": "fresh edible pulp"
+      },
+      "householdMeasure": {
+        "es": "~2 frutos medianos (pulpa)",
+        "en": "~2 medium fruits (pulp)"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw/fresh or blended without cooking; cooked-yield factor = 1.00."
+      },
+      "assumption": true
+    },
+    "cape-gooseberry": {
+      "servingGramsAsEaten": 140,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "fruto fresco",
+        "en": "fresh whole berries"
+      },
+      "householdMeasure": {
+        "es": "~1 taza de frutos frescos",
+        "en": "~1 cup fresh berries"
+      },
+      "servingSource": {
+        "citation": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw/fresh without cooking; cooked-yield factor = 1.00."
+      },
+      "assumption": true
+    }
+  }
+}

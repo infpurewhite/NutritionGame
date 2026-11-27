@@ -27,9 +27,13 @@ export function FoodList({ t, locale, foods, plate, onChange }: Props) {
                 <p class="muted">
                   {t('foods.portion', {
                     grams: food.portion.servingGramsAsEaten,
-                    state: t(`foods.state.${food.portion.state}`),
+                    state:
+                      food.portion.preparedState?.[locale] ?? t(`foods.state.${food.portion.state}`),
                   })}
                 </p>
+                {food.portion.householdMeasure && (
+                  <p class="muted">{food.portion.householdMeasure[locale]}</p>
+                )}
                 {food.isProxy && <p class="tag">{t('foods.proxyNote')}</p>}
                 <div class="stepper">
                   <button

@@ -22,6 +22,7 @@ import type {
   ReferenceProfile,
   Scenario,
   ScoringConfig,
+  SourceRef,
 } from '../src/domain/types.ts';
 import { adaptDataset } from './adapt-dataset.ts';
 
@@ -136,12 +137,15 @@ export function loadGameData(root: string): GameData {
   }
 
   // 2. Game-side files.
-  const intakes = checkedGameFile<{ profiles: ReferenceProfile[] }>(
+  const intakes = checkedGameFile<{ profiles: ReferenceProfile[]; provenance?: SourceRef }>(
     root,
     'referenceIntakes',
     issues,
   );
-  const portions = checkedGameFile<{ portions: Record<string, PortionSpec> }>(
+  const portions = checkedGameFile<{
+    portions: Record<string, PortionSpec>;
+    provenance?: SourceRef;
+  }>(
     root,
     'portions',
     issues,
@@ -151,7 +155,11 @@ export function loadGameData(root: string): GameData {
     'localNames',
     issues,
   );
-  const scenarios = checkedGameFile<{ scenarios: Scenario[] }>(root, 'scenarios', issues);
+  const scenarios = checkedGameFile<{ scenarios: Scenario[]; provenance?: SourceRef }>(
+    root,
+    'scenarios',
+    issues,
+  );
   const scoring = checkedGameFile<ScoringConfig>(root, 'scoring', issues);
 
   if (
@@ -204,5 +212,8 @@ export function loadGameData(root: string): GameData {
     scenarios: scenarios.scenarios,
     referenceProfiles: intakes.profiles,
     scoring,
+    provenance: [intakes.provenance, portions.provenance, scenarios.provenance].filter(
+      (ref): ref is SourceRef => ref !== undefined,
+    ),
   };
 }

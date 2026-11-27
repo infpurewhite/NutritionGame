@@ -8,6 +8,10 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "provenance": {
+      "$ref": "#/$defs/sourceRef",
+      "description": "Where the values in this file were copied from, if they were not sourced here."
+    },
     "portions": {
       "type": "object",
       "additionalProperties": {
@@ -35,6 +39,14 @@
               "cooked",
               "uncooked"
             ]
+          },
+          "preparedState": {
+            "$ref": "#/$defs/localisedText",
+            "description": "How the food is prepared, shown instead of the generic cooked/uncooked label."
+          },
+          "householdMeasure": {
+            "$ref": "#/$defs/localisedText",
+            "description": "The serving as a household measure."
           },
           "servingSource": {
             "$ref": "#/$defs/sourceRef"
@@ -67,6 +79,24 @@
           "format": "uri"
         },
         "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "localisedText": {
+      "type": "object",
+      "required": [
+        "es",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "es": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
           "type": "string",
           "minLength": 1
         }

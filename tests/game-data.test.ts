@@ -164,6 +164,13 @@ describe('game data schemas', () => {
     ).not.toEqual([]);
   });
 
+  it('reject a prepared-state label without both languages', () => {
+    const halfLabelled = { ...PORTION, preparedState: { en: 'boiled' } };
+    expect(
+      validateAgainstSchema({ portions: { x: halfLabelled } }, schema('portions'), 'p'),
+    ).not.toEqual([]);
+  });
+
   it('reject a portion that is not flagged as an assumption', () => {
     const unflagged = { ...PORTION, assumption: false };
     expect(
@@ -202,6 +209,25 @@ describe('loadGameData', () => {
       { id: 'gamma', status: 'locked', names: { en: 'Gamma', es: 'gama' }, lockReason: 'no_values' },
     ]);
     expect(data.scenarios).toHaveLength(1);
+    expect(data.provenance).toEqual([]);
+  });
+
+  it('passes provenance and prepared-state labels through', () => {
+    const copied = { citation: 'Copied from a synthetic upstream file', url: 'https://example.invalid/a.json' };
+    const root = makeRoot((files) => {
+      files.portions['provenance'] = copied;
+      files.scenarios['provenance'] = copied;
+      files.portions['portions'].alpha = {
+        ...PORTION,
+        preparedState: { es: 'hervida', en: 'boiled' },
+        householdMeasure: { es: '1 taza', en: '1 cup' },
+      };
+    });
+    const data = loadGameData(root);
+    expect(data.provenance).toEqual([copied, copied]);
+    expect(data.foods[0]).toMatchObject({
+      portion: { preparedState: { en: 'boiled' }, householdMeasure: { es: '1 taza' } },
+    });
   });
 
   it('lists every missing build input', () => {

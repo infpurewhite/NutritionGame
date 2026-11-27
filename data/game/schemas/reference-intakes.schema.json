@@ -8,6 +8,10 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "provenance": {
+      "$ref": "#/$defs/sourceRef",
+      "description": "Where the values in this file were copied from, if they were not sourced here."
+    },
     "profiles": {
       "type": "array",
       "minItems": 1,

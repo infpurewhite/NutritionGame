@@ -1,0 +1,28 @@
+{
+  "provenance": {
+    "citation": "Copied from version A of this game: NutritionGame, commit f847454, src/data/scenarios.json. Values and citations as written there; not checked independently against the original sources.",
+    "url": "https://github.com/infpurewhite/NutritionGame/blob/f847454af1c98ec31bb151622907510254bab7fe/src/data/scenarios.json"
+  },
+  "scenarios": [
+    {
+      "id": "midday-lunch-adult-woman",
+      "title": {
+        "es": "Almuerzo Andino de Mediodía",
+        "en": "Midday Andean Lunch"
+      },
+      "description": {
+        "es": "Arma un almuerzo equilibrado apuntando a un tercio de las ingestas diarias de referencia FAO/OMS para una mujer adulta (19–50 años). Combina granos cocidos, tubérculos, legumbres, maní y frutas frescas. Observa cómo los rendimientos de cocción y los datos faltantes influyen en tu puntaje.",
+        "en": "Build a balanced lunch targeting one-third of FAO/WHO daily reference intakes for an adult woman (19–50 y). Combine cooked grains, tubers, legumes, nuts and fresh fruits. Watch how cooking yields and missing data affect your balance."
+      },
+      "referenceProfileId": "fao-who-adult-woman-19-50",
+      "mealShare": {
+        "value": 0.3333333333333333,
+        "source": {
+          "citation": "Version A of this game sets this meal to one third of the daily reference intakes (NutritionGame commit f847454, src/data/scenarios.json, mealFraction). It is a design choice; no external source is cited.",
+          "url": "https://github.com/infpurewhite/NutritionGame/blob/f847454af1c98ec31bb151622907510254bab7fe/src/data/scenarios.json"
+        },
+        "assumption": true
+      }
+    }
+  ]
+}

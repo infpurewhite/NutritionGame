@@ -133,6 +133,7 @@ const fixture: GameData = {
   scenarios: [FIXTURE_SCENARIO],
   referenceProfiles: [FIXTURE_PROFILE],
   scoring: FIXTURE_SCORING,
+  provenance: [],
 };
 
 export default fixture;

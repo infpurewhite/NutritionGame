@@ -63,6 +63,9 @@ export const en = {
   'about.portions.row': '{food}: {grams} g {state}, yield factor {yield}',
   'about.portions.servingSource': 'Serving size:',
   'about.portions.yieldSource': 'Yield factor:',
+  'about.provenance.heading': 'Where the targets and portions come from',
+  'about.provenance.body':
+    'The reference intakes, portion sizes and scenario are copied from version A of this game, with their citations. They have not been checked independently against the original sources.',
   'about.licence.heading': 'Licences',
   'about.licence.body': 'Code: MIT. Game content and text: CC BY 4.0.',
 } as const;

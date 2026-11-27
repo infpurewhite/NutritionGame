@@ -32,6 +32,7 @@ function Source({ source }: { source: SourceRef }) {
 export function About({ t, locale, data, scenario, profile }: Props) {
   const playable = data.foods.filter((food): food is PlayableFood => food.status === 'playable');
   const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+  const percent = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
 
   return (
     <main class="about">
@@ -57,7 +58,7 @@ export function About({ t, locale, data, scenario, profile }: Props) {
         <p>
           {t('about.targets.body', {
             profile: profile.description[locale],
-            share: number.format(scenario.mealShare.value * 100),
+            share: percent.format(scenario.mealShare.value * 100),
           })}
         </p>
         <ul class="sources">
@@ -89,7 +90,8 @@ export function About({ t, locale, data, scenario, profile }: Props) {
               {t('about.portions.row', {
                 food: food.names[locale],
                 grams: number.format(food.portion.servingGramsAsEaten),
-                state: t(`foods.state.${food.portion.state}`),
+                state:
+                  food.portion.preparedState?.[locale] ?? t(`foods.state.${food.portion.state}`),
                 yield: number.format(food.portion.cookedYieldFactor),
               })}
               <br />
@@ -101,6 +103,20 @@ export function About({ t, locale, data, scenario, profile }: Props) {
           ))}
         </ul>
       </section>
+
+      {data.provenance.length > 0 && (
+        <section class="card">
+          <h3>{t('about.provenance.heading')}</h3>
+          <p>{t('about.provenance.body')}</p>
+          <ul class="sources">
+            {data.provenance.map((source) => (
+              <li key={source.url ?? source.citation}>
+                <Source source={source} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section class="card">
         <h3>{t('about.licence.heading')}</h3>

@@ -68,6 +68,9 @@ export const es: Readonly<Record<StringKey, string>> = {
   'about.portions.row': '{food}: {grams} g {state}, factor de rendimiento {yield}',
   'about.portions.servingSource': 'Tamaño de porción:',
   'about.portions.yieldSource': 'Factor de rendimiento:',
+  'about.provenance.heading': 'Origen de las metas y las porciones',
+  'about.provenance.body':
+    'Las ingestas de referencia, los tamaños de porción y el escenario están copiados de la versión A de este juego, con sus citas. No se han contrastado de forma independiente con las fuentes originales.',
   'about.licence.heading': 'Licencias',
   'about.licence.body': 'Código: MIT. Contenido y textos del juego: CC BY 4.0.',
 };
