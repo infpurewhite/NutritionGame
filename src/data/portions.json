@@ -1,11 +1,17 @@
 {
-  "_methodology": "Dataset nutrient values are per 100 g edible portion in a raw state (dry seed, fresh tuber or fresh fruit). To score as-eaten portions, each playable food defines an as-eaten serving weight (servingGrams) and a cooked-yield factor (cookedWeight / rawWeight). Raw equivalent grams = servingGrams / cookedYieldFactor. Nutrient retention is assumed to be 1.0 (no cooking loss adjustment) for energy, protein, fibre, iron and calcium, following Bognár (2002) preliminary guidance where specific retention data are absent. Every factor below is explicitly flagged as an assumption.",
+  "_methodology": "Dataset nutrient values are per 100 g edible portion in a raw state (dry seed, fresh tuber or fresh fruit). To score as-eaten portions, each playable food defines an as-eaten serving weight (servingGrams) and a cooked-yield factor (cookedWeight / rawWeight). Raw equivalent grams = servingGrams / cookedYieldFactor. Nutrient retention is assumed to be 1.0 (no cooking loss adjustment) for energy, protein, fibre, iron and calcium, following Bognár (2002) preliminary guidance where specific retention data are absent. Every factor below is explicitly flagged as an assumption. Portions for mashua, oca, olluco, yacón, ají amarillo, granadilla, lúcuma, pacay and tuna come from INS (2016) Tablas auxiliares: Table I household measures (net = edible weight) and Table II cooked-to-raw factors (raw = cooked x factor), converted as yield factor = 1 / factor.",
   "portions": {
     "quinoa": {
       "servingGrams": 140,
       "cookedYieldFactor": 3.06,
-      "preparedState": { "en": "cooked (boiled)", "es": "cocida (hervida)" },
-      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "preparedState": {
+        "en": "cooked (boiled)",
+        "es": "cocida (hervida)"
+      },
+      "householdMeasure": {
+        "en": "~¾ cup cooked",
+        "es": "~¾ taza cocida"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Grains, e.g. rice, barley, plain): RACC = 140 g prepared (45 g dry).",
       "yieldSource": "Derived from USDA FoodData Central SR Legacy: Quinoa, uncooked (FDC 168874, 368 kcal/100 g, 13.3% water) vs Quinoa, cooked (FDC 168917, 120 kcal/100 g, 71.6% water); mass yield factor = 3.06.",
       "isAssumption": true,
@@ -17,8 +23,14 @@
     "kiwicha": {
       "servingGrams": 140,
       "cookedYieldFactor": 3.64,
-      "preparedState": { "en": "cooked (boiled)", "es": "cocida (hervida)" },
-      "householdMeasure": { "en": "~⅔ cup cooked", "es": "~⅔ taza cocida" },
+      "preparedState": {
+        "en": "cooked (boiled)",
+        "es": "cocida (hervida)"
+      },
+      "householdMeasure": {
+        "en": "~⅔ cup cooked",
+        "es": "~⅔ taza cocida"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Grains, plain): RACC = 140 g prepared.",
       "yieldSource": "Derived from USDA FoodData Central SR Legacy: Amaranth grain, uncooked (NDB 20001, 371 kcal/100 g, 11.3% water) vs Amaranth grain, cooked (NDB 20002, 102 kcal/100 g, 75.2% water); mass yield factor = 3.64.",
       "isAssumption": true,
@@ -30,8 +42,14 @@
     "potato": {
       "servingGrams": 110,
       "cookedYieldFactor": 1.0,
-      "preparedState": { "en": "boiled", "es": "sancochada" },
-      "householdMeasure": { "en": "1 small-medium boiled potato", "es": "1 papa mediana sancochada" },
+      "preparedState": {
+        "en": "boiled",
+        "es": "sancochada"
+      },
+      "householdMeasure": {
+        "en": "1 small-medium boiled potato",
+        "es": "1 papa mediana sancochada"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Potatoes, plain, fresh/boiled): RACC = 110 g.",
       "yieldSource": "Bognár, A. (2002). Tables on weight yield of food and retention factors of food constituents (BFE-R-02-03), Table 1: Potatoes boiled in water, weight yield factor ≈ 1.00.",
       "isAssumption": true,
@@ -43,8 +61,14 @@
     "lima-bean": {
       "servingGrams": 130,
       "cookedYieldFactor": 2.94,
-      "preparedState": { "en": "cooked (boiled)", "es": "cocido (hervido)" },
-      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "preparedState": {
+        "en": "cooked (boiled)",
+        "es": "cocido (hervido)"
+      },
+      "householdMeasure": {
+        "en": "~¾ cup cooked",
+        "es": "~¾ taza cocida"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g.",
       "yieldSource": "Derived from USDA FoodData Central SR Legacy: Lima beans, large, mature seeds, raw (338 kcal/100 g) vs cooked, boiled without salt (115 kcal/100 g); mass yield factor = 2.94.",
       "isAssumption": true,
@@ -56,8 +80,14 @@
     "common-bean": {
       "servingGrams": 130,
       "cookedYieldFactor": 2.64,
-      "preparedState": { "en": "cooked (boiled)", "es": "cocido (hervido)" },
-      "householdMeasure": { "en": "~¾ cup cooked", "es": "~¾ taza cocida" },
+      "preparedState": {
+        "en": "cooked (boiled)",
+        "es": "cocido (hervido)"
+      },
+      "householdMeasure": {
+        "en": "~¾ cup cooked",
+        "es": "~¾ taza cocida"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Beans, plain, cooked/canned): RACC = 130 g.",
       "yieldSource": "Derived from USDA FoodData Central SR Legacy: Beans, kidney, all types, mature seeds, raw (335 kcal/100 g) vs cooked, boiled without salt (127 kcal/100 g); mass yield factor = 2.64 (consistent with Bognár 2002 boiled dried beans 2.5–2.7).",
       "isAssumption": true,
@@ -69,8 +99,14 @@
     "peanut": {
       "servingGrams": 30,
       "cookedYieldFactor": 0.95,
-      "preparedState": { "en": "dry-roasted", "es": "tostado" },
-      "householdMeasure": { "en": "1 small handful (~30 g)", "es": "1 puñado pequeño (~30 g)" },
+      "preparedState": {
+        "en": "dry-roasted",
+        "es": "tostado"
+      },
+      "householdMeasure": {
+        "en": "1 small handful (~30 g)",
+        "es": "1 puñado pequeño (~30 g)"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Nuts and seeds, all types): RACC = 30 g.",
       "yieldSource": "Derived from USDA FoodData Central SR Legacy moisture change for raw (6.5% water) vs dry-roasted peanuts (1.8% water): (100 - 6.5) / (100 - 1.8) = 0.95 (consistent with Bognár 2002 dry roasting).",
       "isAssumption": true,
@@ -82,8 +118,14 @@
     "cherimoya": {
       "servingGrams": 140,
       "cookedYieldFactor": 1.0,
-      "preparedState": { "en": "fresh edible pulp", "es": "pulpa fresca" },
-      "householdMeasure": { "en": "~1 cup fresh pulp", "es": "~1 taza de pulpa fresca" },
+      "preparedState": {
+        "en": "fresh edible pulp",
+        "es": "pulpa fresca"
+      },
+      "householdMeasure": {
+        "en": "~1 cup fresh pulp",
+        "es": "~1 taza de pulpa fresca"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
       "yieldSource": "Eaten raw/fresh without thermal processing; cooked-yield factor = 1.00.",
       "isAssumption": true,
@@ -95,8 +137,14 @@
     "naranjilla": {
       "servingGrams": 140,
       "cookedYieldFactor": 1.0,
-      "preparedState": { "en": "fresh edible pulp", "es": "pulpa fresca" },
-      "householdMeasure": { "en": "~2 medium fruits (pulp)", "es": "~2 frutos medianos (pulpa)" },
+      "preparedState": {
+        "en": "fresh edible pulp",
+        "es": "pulpa fresca"
+      },
+      "householdMeasure": {
+        "en": "~2 medium fruits (pulp)",
+        "es": "~2 frutos medianos (pulpa)"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
       "yieldSource": "Eaten raw/fresh or blended without cooking; cooked-yield factor = 1.00.",
       "isAssumption": true,
@@ -108,14 +156,191 @@
     "cape-gooseberry": {
       "servingGrams": 140,
       "cookedYieldFactor": 1.0,
-      "preparedState": { "en": "fresh whole berries", "es": "fruto fresco" },
-      "householdMeasure": { "en": "~1 cup fresh berries", "es": "~1 taza de frutos frescos" },
+      "preparedState": {
+        "en": "fresh whole berries",
+        "es": "fruto fresco"
+      },
+      "householdMeasure": {
+        "en": "~1 cup fresh berries",
+        "es": "~1 taza de frutos frescos"
+      },
       "servingSource": "US FDA 21 CFR 101.12(b), Table 2 (Fruits, all other fresh): RACC = 140 g edible portion.",
       "yieldSource": "Eaten raw/fresh without cooking; cooked-yield factor = 1.00.",
       "isAssumption": true,
       "assumptionNote": {
         "en": "Assumes fresh husked berries eaten raw (yield 1.0×).",
         "es": "Asume frutos frescos sin cáliz consumidos crudos (rendimiento 1,0×)."
+      }
+    },
+    "mashua": {
+      "servingGrams": 56.2,
+      "cookedYieldFactor": 0.9009,
+      "preparedState": {
+        "en": "boiled",
+        "es": "sancochada"
+      },
+      "householdMeasure": {
+        "en": "1 medium mashua",
+        "es": "1 mashua mediana"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 12-33, Mashua, unidad mediana: net (edible) weight 62.4 g raw, p. 70. As eaten: 62.4 g / 1.11 (Table II) = 56.2 g boiled. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table II, Mashua, sancochada: cooked-to-raw factor 1.11, p. 83. Yield factor = 1 / 1.11. https://hdl.handle.net/20.500.14196/989",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "One medium mashua (62.4 g raw edible weight), boiled; assumes 100% nutrient retention.",
+        "es": "Una mashua mediana (62,4 g de parte comestible cruda), sancochada; asume 100 % de retención de nutrientes."
+      }
+    },
+    "oca": {
+      "servingGrams": 39.5,
+      "cookedYieldFactor": 1.0101,
+      "preparedState": {
+        "en": "boiled",
+        "es": "sancochada"
+      },
+      "householdMeasure": {
+        "en": "1 medium oca (10 cm)",
+        "es": "1 oca mediana (10 cm)"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 12-36, Oca, unidad mediana (10 cm): net (edible) weight 39.1 g raw, p. 70. As eaten: 39.1 g / 0.99 (Table II) = 39.5 g boiled. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table II, Oca, entero, sancochado: cooked-to-raw factor 0.99, p. 83. Yield factor = 1 / 0.99. https://hdl.handle.net/20.500.14196/989",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "One medium oca (39.1 g raw edible weight), boiled whole; assumes 100% nutrient retention.",
+        "es": "Una oca mediana (39,1 g de parte comestible cruda), sancochada entera; asume 100 % de retención de nutrientes."
+      }
+    },
+    "ulluco": {
+      "servingGrams": 128.7,
+      "cookedYieldFactor": 0.9524,
+      "preparedState": {
+        "en": "cut in thin strips, boiled",
+        "es": "en juliana, sancochado"
+      },
+      "householdMeasure": {
+        "en": "1 full cup of cut olluco (raw)",
+        "es": "1 taza llena de olluco picado (crudo)"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 12-42, Olluco, picado tipo juliana, taza de acero llena: net weight 135.1 g raw, p. 71. As eaten: 135.1 g / 1.05 (Table II) = 128.7 g boiled. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table II, Olluco, picado tipo juliana, sancochado: cooked-to-raw factor 1.05, p. 83. Yield factor = 1 / 1.05. https://hdl.handle.net/20.500.14196/989",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "One full cup of olluco cut into thin strips (135.1 g raw), boiled; assumes 100% nutrient retention.",
+        "es": "Una taza llena de olluco picado en juliana (135,1 g crudo), sancochado; asume 100 % de retención de nutrientes."
+      }
+    },
+    "yacon": {
+      "servingGrams": 215.4,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh, peeled",
+        "es": "fresco, pelado"
+      },
+      "householdMeasure": {
+        "en": "1 medium yacón",
+        "es": "1 yacón mediano"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 12-72, Yacón, unidad mediana: net (edible) weight 215.4 g, 89% edible, p. 72. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "One medium yacón, peeled and eaten raw (yield 1.0x).",
+        "es": "Un yacón mediano, pelado y consumido crudo (rendimiento 1,0x)."
+      }
+    },
+    "aji-amarillo": {
+      "servingGrams": 46.3,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh",
+        "es": "fresco"
+      },
+      "householdMeasure": {
+        "en": "1 medium ají amarillo",
+        "es": "1 ají amarillo mediano"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 2-3, Ají amarillo, unidad mediana: net (edible) weight 46.3 g, 79% edible, p. 24. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Edible part of one medium ají amarillo, eaten raw (yield 1.0x).",
+        "es": "Parte comestible de un ají amarillo mediano, consumido crudo (rendimiento 1,0x)."
+      }
+    },
+    "granadilla": {
+      "servingGrams": 67.4,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh pulp with seeds",
+        "es": "pulpa fresca con pepas"
+      },
+      "householdMeasure": {
+        "en": "1 medium granadilla",
+        "es": "1 granadilla mediana"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 3-35, Granadilla, unidad mediana: net weight 67.4 g as pulp with seeds (footnote Θ1 \"jugo con pepas\", p. 39), 60% edible, p. 31. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Pulp with seeds of one medium granadilla, eaten fresh (yield 1.0x).",
+        "es": "Pulpa con pepas de una granadilla mediana, consumida fresca (rendimiento 1,0x)."
+      }
+    },
+    "lucuma": {
+      "servingGrams": 161.0,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh pulp",
+        "es": "pulpa fresca"
+      },
+      "householdMeasure": {
+        "en": "1 medium lúcuma",
+        "es": "1 lúcuma mediana"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 3-56, Lúcuma seda (Beltrán), unidad mediana: net (edible) weight 161.0 g, 80% edible, p. 33. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Pulp of one medium lúcuma, eaten fresh (yield 1.0x); INS weighed the \"seda\" variety.",
+        "es": "Pulpa de una lúcuma mediana, consumida fresca (rendimiento 1,0x); el INS pesó la variedad \"seda\"."
+      }
+    },
+    "pacay": {
+      "servingGrams": 40.0,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh pulp",
+        "es": "pulpa fresca"
+      },
+      "householdMeasure": {
+        "en": "1 medium pacay pod (30 cm)",
+        "es": "1 vaina mediana de pacay (30 cm)"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 3-120, Pacae, unidad mediana 30 cm: net (edible) weight 40.0 g, 31% edible, p. 36 (a measure INS carried over from its 1985 edition, marked *). https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Sweet pulp of one medium pacay pod (30 cm), eaten fresh (yield 1.0x).",
+        "es": "Pulpa dulce de una vaina mediana de pacay (30 cm), consumida fresca (rendimiento 1,0x)."
+      }
+    },
+    "tuna": {
+      "servingGrams": 80.7,
+      "cookedYieldFactor": 1.0,
+      "preparedState": {
+        "en": "fresh pulp",
+        "es": "pulpa fresca"
+      },
+      "householdMeasure": {
+        "en": "1 medium prickly pear",
+        "es": "1 tuna mediana"
+      },
+      "servingSource": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3. Table I, code 3-168, Tuna roja, unidad mediana: net (edible) weight 80.7 g, 57% edible, p. 39. https://hdl.handle.net/20.500.14196/989",
+      "yieldSource": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0).",
+      "isAssumption": true,
+      "assumptionNote": {
+        "en": "Pulp of one medium tuna, eaten fresh (yield 1.0x); INS weighed red tuna.",
+        "es": "Pulpa de una tuna mediana, consumida fresca (rendimiento 1,0x); el INS pesó la tuna roja."
       }
     }
   }

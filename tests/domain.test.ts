@@ -25,22 +25,31 @@ const referenceIntakes = referenceIntakesJson as unknown as ReferenceIntakesFile
 const lunchScenario = (scenariosJson as unknown as Scenario[])[0];
 
 describe('deriveCropAvailability (playable/locked derivation)', () => {
-  it('derives 9 playable and 26 locked crops from v0.6.0 verification fields and sourced portions', () => {
+  it('derives 18 playable and 17 locked crops from v0.6.0 verification fields and sourced portions', () => {
     const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
 
     const playableIds = catalog.playable.map((c) => c.id).sort();
     expect(playableIds).toEqual([
+      'aji-amarillo',
       'cape-gooseberry',
       'cherimoya',
       'common-bean',
+      'granadilla',
       'kiwicha',
       'lima-bean',
+      'lucuma',
+      'mashua',
       'naranjilla',
+      'oca',
+      'pacay',
       'peanut',
       'potato',
       'quinoa',
+      'tuna',
+      'ulluco',
+      'yacon',
     ]);
-    expect(catalog.locked).toHaveLength(26);
+    expect(catalog.locked).toHaveLength(17);
     // Every v0.6.0 value is verified, so each locked crop is waiting only for a sourced portion
     expect(new Set(catalog.locked.map((c) => c.lockReason))).toEqual(new Set(['no_portion']));
   });
@@ -65,7 +74,7 @@ describe('deriveCropAvailability (playable/locked derivation)', () => {
     expect(catalog.byId['canihua'].rawValuesPer100g.protein).toBe(15.7);
     // Unverified nutrients on that same crop remain null ("no data")
     expect(catalog.byId['canihua'].rawValuesPer100g.energy).toBeNull();
-    expect(catalog.playable).toHaveLength(10);
+    expect(catalog.playable).toHaveLength(19);
   });
 
   it('flags proxy matches (kiwicha and cape-gooseberry) from composition.match', () => {
@@ -119,6 +128,16 @@ describe('portion conversion and as-eaten nutrient calculations', () => {
     expect(nutrients.energy).toBeCloseTo((368 * (140 / 3.06)) / 100, 2);
     expect(nutrients.energy!).toBeLessThan(200);
     expect(nutrients.protein).toBeCloseTo((14.12 * (140 / 3.06)) / 100, 2);
+  });
+
+  it('converts an INS household measure to as-eaten grams: 1 medium mashua, boiled', () => {
+    const rule = portions.portions['mashua'];
+    // INS Table I: 62.4 g raw edible; Table II: raw = cooked x 1.11
+    expect(getRawEquivalentGrams(rule, 1)).toBeCloseTo(62.4, 1);
+    const nutrients = calculatePortionNutrients(catalog.byId['mashua'], rule, 1);
+    expect(nutrients.energy).toBeCloseTo((32 * 62.4) / 100, 1);
+    // Mashua has no calcium value in v0.6.0
+    expect(nutrients.calcium).toBeNull();
   });
 
   it('preserves null for missing nutrients rather than converting to zero', () => {
