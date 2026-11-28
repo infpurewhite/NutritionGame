@@ -6,7 +6,6 @@ import type { CropRecord, NutrientValues } from '../src/domain/types.ts';
 import {
   FIXTURE_CROPS,
   FIXTURE_PORTIONS,
-  FIXTURE_SPANISH_NAMES,
 } from './fixtures/game-data.fixture.ts';
 
 const VALUES: NutrientValues = { energy: 100, protein: 2, fibre: 2, iron: 1, calcium: 10 };
@@ -22,6 +21,7 @@ function crop(verificationLevels: string[], per100gRaw: NutrientValues = VALUES)
   return {
     id: 'x',
     nameEn: 'X',
+    nameEs: 'X',
     per100gRaw,
     verificationLevels,
     isProxy: false,
@@ -71,7 +71,7 @@ describe('classifyCrop', () => {
 });
 
 describe('buildCatalogue', () => {
-  const foods = buildCatalogue(FIXTURE_CROPS, FIXTURE_PORTIONS, FIXTURE_SPANISH_NAMES);
+  const foods = buildCatalogue(FIXTURE_CROPS, FIXTURE_PORTIONS);
   const byId = Object.fromEntries(foods.map((food) => [food.id, food]));
 
   it('derives the playable/locked split from the verification fields', () => {
@@ -89,7 +89,7 @@ describe('buildCatalogue', () => {
       entry.id === 'fixture-legume' ? { ...entry, verificationLevels: ['verified'] } : entry,
     );
     const portions = { ...FIXTURE_PORTIONS, 'fixture-legume': FIXTURE_PORTIONS['fixture-grain']! };
-    const legume = buildCatalogue(upgraded, portions, FIXTURE_SPANISH_NAMES).find(
+    const legume = buildCatalogue(upgraded, portions).find(
       (food) => food.id === 'fixture-legume',
     );
     expect(legume?.status).toBe('playable');
@@ -115,11 +115,23 @@ describe('buildCatalogue', () => {
     });
   });
 
-  it('fails when a playable crop has no sourced portion', () => {
+  it('locks a crop with playable values until it has a sourced portion', () => {
     const { 'fixture-grain': _removed, ...portions } = FIXTURE_PORTIONS;
-    expect(() => buildCatalogue(FIXTURE_CROPS, portions, FIXTURE_SPANISH_NAMES)).toThrow(
-      /"fixture-grain" has no sourced portion/,
-    );
+    const grain = buildCatalogue(FIXTURE_CROPS, portions).find((food) => food.id === 'fixture-grain');
+    expect(grain).toEqual({
+      id: 'fixture-grain',
+      status: 'locked',
+      names: { en: 'Fixture grain (synthetic)', es: 'Grano de prueba (sintético)' },
+      lockReason: 'no_portion',
+    });
+  });
+
+  it('refuses an uncooked portion for tarwi even when the dataset has no "not eaten raw" flag', () => {
+    const tarwi = { ...crop(['verified']), id: 'tarwi' };
+    const uncooked = { ...FIXTURE_PORTIONS['fixture-fruit']!, state: 'uncooked' as const };
+    expect(() => buildCatalogue([tarwi], { tarwi: uncooked })).toThrow(/"tarwi" must not be eaten raw/);
+    const cooked = { ...FIXTURE_PORTIONS['fixture-grain']!, state: 'cooked' as const };
+    expect(buildCatalogue([tarwi], { tarwi: cooked })[0]?.status).toBe('playable');
   });
 
   it('does not require a portion for a locked crop', () => {
@@ -127,18 +139,9 @@ describe('buildCatalogue', () => {
     expect(byId['fixture-legume']?.status).toBe('locked');
   });
 
-  it('fails when a crop has no Spanish name', () => {
-    const { 'fixture-root': _removed, ...names } = FIXTURE_SPANISH_NAMES;
-    expect(() => buildCatalogue(FIXTURE_CROPS, FIXTURE_PORTIONS, names)).toThrow(
-      /"fixture-root" has no Spanish name/,
-    );
-  });
-
-  it('fails on a portion or name for a crop that is not in the dataset', () => {
+  it('fails on a portion for a crop that is not in the dataset', () => {
     const portions = { ...FIXTURE_PORTIONS, ghost: FIXTURE_PORTIONS['fixture-grain']! };
-    expect(() => buildCatalogue(FIXTURE_CROPS, portions, FIXTURE_SPANISH_NAMES)).toThrow(
-      /unknown crop "ghost"/,
-    );
+    expect(() => buildCatalogue(FIXTURE_CROPS, portions)).toThrow(/unknown crop "ghost"/);
   });
 });
 

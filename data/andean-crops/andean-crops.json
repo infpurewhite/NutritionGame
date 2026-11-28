@@ -2,10 +2,10 @@
   "$schema": "./andean-crops.schema.json",
   "metadata": {
     "title": "Andean crops nutrient composition dataset",
-    "version": "0.3.0",
-    "date": "2026-11-13",
-    "description": "Proximate composition, energy and selected minerals of eight Andean crops, with per-value provenance and verification status.",
-    "basis": "All values are per 100 g edible portion of the food in the state described for each crop (dry seed or kernel, dried hypocotyl or fresh tuber). Values are not comparable across these states without conversion.",
+    "version": "0.6.0",
+    "date": "2026-11-28",
+    "description": "Proximate composition, energy, selected minerals and vitamin C of Andean crops, with per-value provenance and verification status.",
+    "basis": "All values are per 100 g edible portion of the food in the state described for each crop (for example dry seed, dried hypocotyl, fresh tuber or fresh fruit). Values are not comparable across these states without conversion.",
     "verification_levels": {
       "verified": "Checked against the primary source record by a curator.",
       "corroborated": "Matches the named source record as reproduced by at least one independent secondary copy; the primary record was not accessed.",
@@ -122,21 +122,27 @@
       "group": "mineral",
       "decimals": 1,
       "description": "Total iron; bioavailability is not represented."
+    },
+    {
+      "id": "zinc",
+      "label": "Zinc",
+      "unit": "mg",
+      "infoods": "ZN",
+      "group": "mineral",
+      "decimals": 1,
+      "description": "Total zinc; bioavailability is not represented."
+    },
+    {
+      "id": "vitamin_c",
+      "label": "Vitamin C",
+      "unit": "mg",
+      "infoods": "VITC",
+      "group": "vitamin",
+      "decimals": 1,
+      "description": "Total ascorbic acid as reported by the source; losses during storage, processing and cooking are not represented."
     }
   ],
   "sources": [
-    {
-      "id": "legacy-v0",
-      "type": "internal",
-      "authors": [
-        {
-          "literal": "andean-crops repository"
-        }
-      ],
-      "year": null,
-      "title": "Values carried over from version 0.1 of this repository, for which no primary source was documented",
-      "record_check": "not-applicable"
-    },
     {
       "id": "usda-sr-legacy-2018",
       "type": "database",
@@ -151,6 +157,32 @@
       "place": "Beltsville, MD",
       "url": "https://fdc.nal.usda.gov/",
       "record_check": "indexed-record"
+    },
+    {
+      "id": "ins-2023-tpca",
+      "type": "book",
+      "authors": [
+        {
+          "family": "Reyes García",
+          "given": "M.M."
+        },
+        {
+          "family": "Gómez Sánchez Prieto",
+          "given": "V.I."
+        },
+        {
+          "family": "Espinoza Barrientos",
+          "given": "C.M."
+        }
+      ],
+      "year": 2023,
+      "title": "Tablas peruanas de composición de alimentos",
+      "edition": "11th edn (digital version)",
+      "place": "Lima",
+      "publisher": "Instituto Nacional de Salud",
+      "url": "https://hdl.handle.net/20.500.14196/1773",
+      "record_check": "indexed-record",
+      "language": "es"
     },
     {
       "id": "fao-2003-fnp77",
@@ -520,6 +552,174 @@
       "pages": "1481–1488",
       "doi": "10.1002/jsfa.2529",
       "record_check": "crossref"
+    },
+    {
+      "id": "akter-2011",
+      "type": "article",
+      "authors": [
+        {
+          "family": "Akter",
+          "given": "M.S."
+        },
+        {
+          "family": "Oh",
+          "given": "S."
+        },
+        {
+          "family": "Eun",
+          "given": "J.-B."
+        },
+        {
+          "family": "Ahmed",
+          "given": "M."
+        }
+      ],
+      "year": 2011,
+      "title": "Nutritional compositions and health promoting phytochemicals of camu-camu (Myrciaria dubia) fruit: a review",
+      "container": "Food Research International",
+      "volume": "44",
+      "issue": "7",
+      "pages": "1728–1732",
+      "record_check": "crossref",
+      "doi": "10.1016/j.foodres.2011.03.045"
+    },
+    {
+      "id": "el-mostafa-2014",
+      "type": "article",
+      "authors": [
+        {
+          "family": "El-Mostafa",
+          "given": "K."
+        },
+        {
+          "family": "El Kharrassi",
+          "given": "Y."
+        },
+        {
+          "family": "Badreddine",
+          "given": "A."
+        },
+        {
+          "family": "Andreoletti",
+          "given": "P."
+        },
+        {
+          "family": "Vamecq",
+          "given": "J."
+        },
+        {
+          "family": "El Kebbaj",
+          "given": "M."
+        },
+        {
+          "family": "Latruffe",
+          "given": "N."
+        },
+        {
+          "family": "Lizard",
+          "given": "G."
+        },
+        {
+          "family": "Nasser",
+          "given": "B."
+        },
+        {
+          "family": "Cherkaoui-Malki",
+          "given": "M."
+        }
+      ],
+      "year": 2014,
+      "title": "Nopal cactus (Opuntia ficus-indica) as a source of bioactive compounds for nutrition, health and disease",
+      "container": "Molecules",
+      "volume": "19",
+      "issue": "9",
+      "pages": "14879–14901",
+      "record_check": "crossref",
+      "doi": "10.3390/molecules190914879"
+    },
+    {
+      "id": "gutierrez-2011",
+      "type": "article",
+      "authors": [
+        {
+          "family": "Gutiérrez",
+          "given": "L.F."
+        },
+        {
+          "family": "Rosada",
+          "given": "L.M."
+        },
+        {
+          "family": "Jiménez",
+          "given": "Á."
+        }
+      ],
+      "year": 2011,
+      "title": "Chemical composition of sacha inchi (Plukenetia volubilis L.) seeds and characteristics of their lipid fraction",
+      "container": "Grasas y Aceites",
+      "volume": "62",
+      "issue": "1",
+      "pages": "76–83",
+      "record_check": "crossref",
+      "doi": "10.3989/gya044510"
+    },
+    {
+      "id": "mendez-ancca-2023",
+      "type": "article",
+      "authors": [
+        {
+          "family": "Méndez-Ancca",
+          "given": "S."
+        },
+        {
+          "family": "Pepe-Victoriano",
+          "given": "R."
+        },
+        {
+          "family": "Gonzales",
+          "given": "H.H.S."
+        },
+        {
+          "family": "Zambrano-Cabanillas",
+          "given": "A.W."
+        },
+        {
+          "family": "Marín-Machuca",
+          "given": "O."
+        },
+        {
+          "family": "Rojas",
+          "given": "J.C.Z."
+        },
+        {
+          "family": "Maquera",
+          "given": "M.M."
+        },
+        {
+          "family": "Huanca",
+          "given": "R.F."
+        },
+        {
+          "family": "Aguilera",
+          "given": "J.G."
+        },
+        {
+          "family": "Zuffo",
+          "given": "A.M."
+        },
+        {
+          "family": "Ratke",
+          "given": "R.F."
+        }
+      ],
+      "year": 2023,
+      "title": "Physicochemical evaluation of cushuro (Nostoc sphaericum Vaucher ex Bornet & Flahault) in the region of Moquegua for food purposes",
+      "container": "Foods",
+      "volume": "12",
+      "issue": "10",
+      "pages": "1939",
+      "record_check": "crossref",
+      "doi": "10.3390/foods12101939"
     }
   ],
   "crops": [
@@ -527,6 +727,7 @@
       "id": "quinoa",
       "names": {
         "common": "Quinoa",
+        "es": "Quinua",
         "alternative": [
           "quinua"
         ]
@@ -550,41 +751,43 @@
         "values": {
           "energy": {
             "value": 368,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
             "value": 13.28,
-            "verification": "corroborated",
-            "note": "Corroborated by scaling a per-cup (170 g) listing of the source record to 100 g."
+            "verification": "verified"
           },
           "protein": {
             "value": 14.12,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 6.07,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 64.16,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 7.0,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "ash": {
             "value": 2.38,
-            "verification": "corroborated",
-            "note": "Corroborated by scaling a per-cup (170 g) listing of the source record to 100 g."
+            "verification": "verified"
           },
           "calcium": {
             "value": 47,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "iron": {
             "value": 4.57,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 3.1,
+            "verification": "verified"
           }
         }
       },
@@ -633,9 +836,11 @@
       "id": "kiwicha",
       "names": {
         "common": "Kiwicha",
-        "alternative": [
+        "es": "Kiwicha",
+        "alternative_en": [
           "Andean amaranth"
-        ]
+        ],
+        "alternative": []
       },
       "taxon": {
         "genus": "Amaranthus",
@@ -647,8 +852,7 @@
       "edible_part": "seed",
       "food": {
         "description": "Amaranth grain, uncooked (species not specified by the source)",
-        "condition": "dry",
-        "note": "Water and ash were not added because they could not be corroborated for this source record; dry-matter values are therefore unavailable."
+        "condition": "dry"
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
@@ -657,31 +861,47 @@
         "values": {
           "energy": {
             "value": 371,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "water": {
+            "value": 11.29,
+            "verification": "verified"
           },
           "protein": {
             "value": 13.56,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 7.02,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 65.25,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 6.7,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 2.88,
+            "verification": "verified"
           },
           "calcium": {
             "value": 159,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "iron": {
             "value": 7.61,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 2.87,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 4.2,
+            "verification": "verified"
           }
         }
       },
@@ -727,6 +947,7 @@
       "id": "canihua",
       "names": {
         "common": "Cañihua",
+        "es": "Cañihua",
         "alternative": [
           "kañiwa",
           "cañahua"
@@ -741,40 +962,50 @@
       "crop_group": "pseudocereal",
       "edible_part": "seed",
       "food": {
-        "description": "Seed, dry (state as stated in version 0.1; not documented by a source)",
-        "condition": "dry"
+        "description": "Seed, dry (yellow variety)",
+        "condition": "dry",
+        "note": "The same tables also list grey (A 9), brown (A 11) and red (A 81) cañihua."
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "A 8, 'Cañihua, variedad amarilla'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 343,
-            "verification": "unverified"
+            "value": 381,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 10.7,
+            "verification": "verified"
           },
           "protein": {
             "value": 15.7,
-            "verification": "unverified"
+            "verification": "verified"
           },
           "fat": {
-            "value": 4.2,
-            "verification": "unverified"
+            "value": 7.5,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 63.8,
-            "verification": "unverified"
+            "value": 62.5,
+            "verification": "verified"
           },
-          "fibre": {
-            "value": 9.8,
-            "verification": "unverified"
+          "ash": {
+            "value": 3.5,
+            "verification": "verified"
           },
           "calcium": {
-            "value": 110,
-            "verification": "unverified"
+            "value": 87,
+            "verification": "verified"
           },
           "iron": {
-            "value": 13.0,
-            "verification": "unverified"
+            "value": 10.8,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 2.2,
+            "verification": "verified"
           }
         }
       },
@@ -815,9 +1046,12 @@
       "id": "tarwi",
       "names": {
         "common": "Tarwi",
-        "alternative": [
-          "chocho",
+        "es": "Tarwi",
+        "alternative_en": [
           "Andean lupin"
+        ],
+        "alternative": [
+          "chocho"
         ]
       },
       "taxon": {
@@ -829,41 +1063,59 @@
       "crop_group": "grain_legume",
       "edible_part": "seed",
       "food": {
-        "description": "Seed, dry (debittering status not documented)",
-        "condition": "dry",
-        "note": "Debittered, cooked tarwi as eaten has a much higher water content than the dry seed."
+        "description": "Seed, cooked with the seed coat",
+        "condition": "cooked",
+        "note": "Tarwi is eaten only after debittering; the source describes the cooked seed but not how it was debittered."
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "T 37, 'Frejol tarhui o chocho cocido con cáscara'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 411,
-            "verification": "unverified"
+            "value": 140,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 69.7,
+            "verification": "verified"
           },
           "protein": {
-            "value": 44.3,
-            "verification": "unverified"
+            "value": 11.6,
+            "verification": "verified"
           },
           "fat": {
-            "value": 16.5,
-            "verification": "unverified"
+            "value": 8.6,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 28.2,
-            "verification": "unverified"
+            "value": 9.5,
+            "verification": "verified"
           },
           "fibre": {
-            "value": 11.2,
-            "verification": "unverified"
+            "value": 2.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.6,
+            "verification": "verified"
           },
           "calcium": {
-            "value": 93,
-            "verification": "unverified"
+            "value": 30,
+            "verification": "verified"
           },
           "iron": {
-            "value": 5.3,
-            "verification": "unverified"
+            "value": 1.4,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 1.38,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
           }
         }
       },
@@ -885,12 +1137,7 @@
           "checked": false
         }
       ],
-      "flags": [
-        {
-          "code": "not-eaten-raw",
-          "text": "The raw seed is not eaten; values do not describe the debittered food as consumed."
-        }
-      ],
+      "flags": [],
       "image": {
         "file": "assets/img/crops/tarwi.webp",
         "alt": "Tarwi seeds (Lupinus mutabilis)",
@@ -908,6 +1155,7 @@
       "id": "maca",
       "names": {
         "common": "Maca",
+        "es": "Maca",
         "alternative": []
       },
       "taxon": {
@@ -920,40 +1168,49 @@
       "crop_group": "root_tuber",
       "edible_part": "hypocotyl",
       "food": {
-        "description": "Hypocotyl, dried (inferred from energy density; not documented by a source)",
+        "description": "Hypocotyl, dried",
         "condition": "dried"
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "U 11, 'Maca (tubérculo seco)'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 325,
-            "verification": "unverified"
+            "value": 301,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 15.3,
+            "verification": "verified"
           },
           "protein": {
-            "value": 10.2,
-            "verification": "unverified"
+            "value": 11.8,
+            "verification": "verified"
           },
           "fat": {
-            "value": 0.9,
-            "verification": "unverified"
+            "value": 1.6,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 71.4,
-            "verification": "unverified"
+            "value": 66.3,
+            "verification": "verified"
           },
-          "fibre": {
-            "value": 8.5,
-            "verification": "unverified"
+          "ash": {
+            "value": 5.0,
+            "verification": "verified"
           },
           "calcium": {
-            "value": 250,
-            "verification": "unverified"
+            "value": 247,
+            "verification": "verified"
           },
           "iron": {
-            "value": 14.8,
-            "verification": "unverified"
+            "value": 14.7,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 2.5,
+            "verification": "verified"
           }
         }
       },
@@ -991,12 +1248,7 @@
           "checked": true
         }
       ],
-      "flags": [
-        {
-          "code": "composite-suspected",
-          "text": "Energy, carbohydrate, calcium and iron coincide with values declared on at least one commercial maca-powder label (rounded label declarations, not analytical data). The origin of the other values is unknown, so the record may combine values from different products or samples."
-        }
-      ],
+      "flags": [],
       "image": {
         "file": "assets/img/crops/maca.webp",
         "alt": "Maca hypocotyls with leaves",
@@ -1015,6 +1267,7 @@
       "id": "purple-corn",
       "names": {
         "common": "Purple corn",
+        "es": "Maíz morado",
         "alternative": [
           "maíz morado"
         ]
@@ -1029,40 +1282,54 @@
       "crop_group": "cereal",
       "edible_part": "kernel",
       "food": {
-        "description": "Kernel, dry (not documented by a source)",
-        "condition": "dry"
+        "description": "Flour",
+        "condition": "dry",
+        "note": "The tables list purple maize as flour (as used for api), not as whole kernels."
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "A 104, 'Maíz morado, harina de (api)'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 356,
-            "verification": "unverified"
+            "value": 318,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 11.4,
+            "verification": "verified"
           },
           "protein": {
             "value": 8.5,
-            "verification": "unverified"
+            "verification": "verified"
           },
           "fat": {
-            "value": 4.3,
-            "verification": "unverified"
+            "value": 4.2,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 74.2,
-            "verification": "unverified"
+            "value": 74.3,
+            "verification": "verified"
           },
           "fibre": {
-            "value": 7.3,
-            "verification": "unverified"
+            "value": 9.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.7,
+            "verification": "verified"
           },
           "calcium": {
-            "value": 18,
-            "verification": "unverified"
+            "value": 29,
+            "verification": "verified"
           },
           "iron": {
-            "value": 2.1,
-            "verification": "unverified"
+            "value": 6.47,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 2.6,
+            "verification": "verified"
           }
         }
       },
@@ -1103,6 +1370,7 @@
       "id": "mashua",
       "names": {
         "common": "Mashua",
+        "es": "Mashua",
         "alternative": [
           "isaño"
         ]
@@ -1116,40 +1384,53 @@
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
-        "description": "Tuber, fresh (inferred from energy density; not documented by a source)",
+        "description": "Tuber, fresh",
         "condition": "fresh"
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "U 16, 'Mashua o isaño'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 52,
-            "verification": "unverified"
+            "value": 32,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 88.0,
+            "verification": "verified"
           },
           "protein": {
-            "value": 1.5,
-            "verification": "unverified"
+            "value": 0.7,
+            "verification": "verified"
           },
           "fat": {
-            "value": 0.2,
-            "verification": "unverified"
+            "value": 0.1,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 11.3,
-            "verification": "unverified"
+            "value": 10.6,
+            "verification": "verified"
           },
           "fibre": {
-            "value": 1.8,
-            "verification": "unverified"
+            "value": 2.9,
+            "verification": "verified"
           },
-          "calcium": {
-            "value": 12,
-            "verification": "unverified"
+          "ash": {
+            "value": 0.5,
+            "verification": "verified"
           },
           "iron": {
-            "value": 1.2,
-            "verification": "unverified"
+            "value": 0.37,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.28,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 42.06,
+            "verification": "verified"
           }
         }
       },
@@ -1190,9 +1471,11 @@
       "id": "oca",
       "names": {
         "common": "Oca",
-        "alternative": [
+        "es": "Oca",
+        "alternative_en": [
           "New Zealand yam"
-        ]
+        ],
+        "alternative": []
       },
       "taxon": {
         "genus": "Oxalis",
@@ -1203,40 +1486,54 @@
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
-        "description": "Tuber, fresh (inferred from energy density; not documented by a source)",
+        "description": "Tuber, peeled, fresh",
         "condition": "fresh"
       },
       "composition": {
-        "source": "legacy-v0",
-        "match": "unknown",
+        "source": "ins-2023-tpca",
+        "source_record": "U 50, 'Oca sin cáscara'",
+        "match": "direct",
         "values": {
           "energy": {
-            "value": 61,
-            "verification": "unverified"
+            "value": 53,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 83.0,
+            "verification": "verified"
           },
           "protein": {
-            "value": 1.1,
-            "verification": "unverified"
+            "value": 0.7,
+            "verification": "verified"
           },
           "fat": {
-            "value": 0.6,
-            "verification": "unverified"
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
           },
           "carbohydrate_total": {
-            "value": 13.3,
-            "verification": "unverified"
+            "value": 15.6,
+            "verification": "verified"
           },
           "fibre": {
-            "value": 1.4,
-            "verification": "unverified"
+            "value": 2.4,
+            "verification": "verified"
           },
-          "calcium": {
-            "value": 19,
-            "verification": "unverified"
+          "ash": {
+            "value": 0.7,
+            "verification": "verified"
           },
           "iron": {
-            "value": 1.6,
-            "verification": "unverified"
+            "value": 0.47,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.14,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 23.92,
+            "verification": "verified"
           }
         }
       },
@@ -1275,6 +1572,7 @@
       "id": "potato",
       "names": {
         "common": "Potato",
+        "es": "Papa",
         "alternative": [
           "papa"
         ]
@@ -1294,36 +1592,52 @@
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
-        "source_record": "FDC ID 170026, 'Potatoes, flesh and skin, raw'",
+        "source_record": "FDC ID 170026 (SR Legacy NDB 11352), 'Potatoes, flesh and skin, raw'",
         "match": "direct",
         "values": {
           "energy": {
             "value": 77,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
             "value": 79.25,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "protein": {
             "value": 2.05,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 0.09,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 17.49,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 2.1,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.11,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 12,
+            "verification": "verified"
           },
           "iron": {
             "value": 0.81,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 19.7,
+            "verification": "verified"
           }
         }
       },
@@ -1347,6 +1661,7 @@
       "id": "ulluco",
       "names": {
         "common": "Ulluco",
+        "es": "Olluco",
         "alternative": [
           "olluco",
           "melloco"
@@ -1361,13 +1676,51 @@
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
-        "description": "Tuber, fresh",
+        "description": "Tuber, peeled, fresh",
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "U 17, 'Olluco sin cáscara'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 59,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 83.7,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 1.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.1,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 14.3,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.8,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 3,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 1.1,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 11.5,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1389,6 +1742,7 @@
       "id": "yacon",
       "names": {
         "common": "Yacón",
+        "es": "Yacón",
         "alternative": [
           "yacon"
         ]
@@ -1406,9 +1760,47 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "U 10, 'Llacón'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 51,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 86.6,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 12.5,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 23,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 13.1,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1430,9 +1822,12 @@
       "id": "arracacha",
       "names": {
         "common": "Arracacha",
-        "alternative": [
-          "racacha",
+        "es": "Arracacha",
+        "alternative_en": [
           "Peruvian parsnip"
+        ],
+        "alternative": [
+          "racacha"
         ]
       },
       "taxon": {
@@ -1448,9 +1843,56 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "U 1, 'Arracacha o racacha'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 94,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 72.4,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 1.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 25.2,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 2.3,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.9,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 28,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.41,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.11,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1472,9 +1914,11 @@
       "id": "achira",
       "names": {
         "common": "Achira",
-        "alternative": [
+        "es": "Achira",
+        "alternative_en": [
           "Queensland arrowroot"
-        ]
+        ],
+        "alternative": []
       },
       "taxon": {
         "genus": "Canna",
@@ -1486,13 +1930,51 @@
       "crop_group": "root_tuber",
       "edible_part": "rhizome",
       "food": {
-        "description": "Rhizome, fresh",
+        "description": "Rhizome, fresh (white achira)",
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "U 39, 'Achira blanca (rizoma, raíz)'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 96,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 73.2,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 1.4,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.1,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 23.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.5,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 13,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.7,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.7,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1513,6 +1995,7 @@
       "id": "chuno",
       "names": {
         "common": "Chuño",
+        "es": "Chuño",
         "alternative": [
           "tunta"
         ]
@@ -1527,13 +2010,51 @@
       "crop_group": "root_tuber",
       "edible_part": "tuber",
       "food": {
-        "description": "Freeze-dried potato tuber",
+        "description": "Black chuño (freeze-dried potato)",
         "condition": "dried"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "U 20, 'Papa chuño negro'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 333,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 14.1,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 4.0,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.2,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 79.4,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 2.3,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 44,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.9,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 1.7,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1555,6 +2076,7 @@
       "id": "lima-bean",
       "names": {
         "common": "Lima bean",
+        "es": "Pallar",
         "alternative": [
           "pallar"
         ]
@@ -1578,31 +2100,48 @@
         "values": {
           "energy": {
             "value": 338,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "water": {
+            "value": 10.17,
+            "verification": "verified"
           },
           "protein": {
             "value": 21.46,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 0.69,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 63.38,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 19.0,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "ash": {
             "value": 4.3,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "calcium": {
             "value": 81,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 7.51,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 2.83,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Recorded as zero by the source without analytical data points."
           }
         }
       },
@@ -1626,6 +2165,7 @@
       "id": "common-bean",
       "names": {
         "common": "Common bean",
+        "es": "Frijol",
         "alternative": [
           "frijol",
           "poroto"
@@ -1646,32 +2186,53 @@
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
-        "source_record": "FDC ID 175189, 'Beans, cranberry (roman), mature seeds, raw'",
+        "source_record": "FDC ID 175189 (SR Legacy NDB 16019), 'Beans, cranberry (roman), mature seeds, raw'",
         "match": "direct",
         "values": {
           "energy": {
             "value": 335,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "water": {
+            "value": 12.39,
+            "verification": "verified"
           },
           "protein": {
-            "value": 23.0,
-            "verification": "corroborated"
+            "value": 23.03,
+            "verification": "verified"
           },
           "fat": {
-            "value": 1.2,
-            "verification": "corroborated"
+            "value": 1.23,
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 60.05,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 24.7,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 3.31,
+            "verification": "verified"
           },
           "calcium": {
             "value": 127,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 5.0,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 3.63,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Recorded as zero by the source without analytical data points."
           }
         }
       },
@@ -1692,9 +2253,89 @@
       }
     },
     {
+      "id": "nuna",
+      "names": {
+        "common": "Ñuña",
+        "es": "Ñuña",
+        "alternative_en": [
+          "popping bean"
+        ],
+        "alternative": [
+          "nuña"
+        ]
+      },
+      "taxon": {
+        "genus": "Phaseolus",
+        "species": "vulgaris",
+        "authority": "L.",
+        "family": "Fabaceae",
+        "note": "Ñuñas are popping-bean landraces of the common bean; no infraspecific name is used."
+      },
+      "crop_group": "grain_legume",
+      "edible_part": "seed",
+      "food": {
+        "description": "Seed, dry",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "ins-2023-tpca",
+        "source_record": "T 70, 'Frejol ñuña'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 271,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 11.3,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 19.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 1.2,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 64.6,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 16.7,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 3.9,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 143,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 4.13,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 2.22,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 5.0,
+            "verification": "verified"
+          }
+        }
+      },
+      "notes": [],
+      "flags": []
+    },
+    {
       "id": "peanut",
       "names": {
         "common": "Peanut",
+        "es": "Maní",
         "alternative": [
           "maní"
         ]
@@ -1718,39 +2359,48 @@
         "values": {
           "energy": {
             "value": 567,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
             "value": 6.5,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "protein": {
             "value": 25.8,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 49.24,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 16.13,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fibre": {
             "value": 8.5,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "ash": {
             "value": 2.33,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "calcium": {
             "value": 92,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "iron": {
             "value": 4.58,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 3.27,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Assumed zero by the source (insignificant amount)."
           }
         }
       },
@@ -1771,13 +2421,100 @@
       }
     },
     {
+      "id": "sacha-inchi",
+      "names": {
+        "common": "Sacha inchi",
+        "es": "Sacha inchi",
+        "alternative_en": [
+          "Inca peanut",
+          "sacha peanut"
+        ],
+        "alternative": [
+          "maní del Inca"
+        ]
+      },
+      "taxon": {
+        "genus": "Plukenetia",
+        "species": "volubilis",
+        "authority": "L.",
+        "family": "Euphorbiaceae"
+      },
+      "crop_group": "oilseed",
+      "edible_part": "seed",
+      "food": {
+        "description": "Seed, roasted",
+        "condition": "dry"
+      },
+      "composition": {
+        "source": "ins-2023-tpca",
+        "source_record": "D 38, 'Sacha Inchi tostado'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 574,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 2.8,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 25.6,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 54.4,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 14.5,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 7.1,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 2.7,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 267,
+            "verification": "verified"
+          }
+        }
+      },
+      "notes": [
+        {
+          "kind": "context",
+          "text": "Seeds from Colombia were reported to contain 41.4 % oil and 24.7 % protein, with potassium, magnesium and calcium as the main minerals.",
+          "refs": [
+            "gutierrez-2011"
+          ],
+          "checked": true
+        },
+        {
+          "kind": "context",
+          "text": "The seed oil is dominated by α-linolenic acid (50.8 % of fatty acids) and linoleic acid (33.4 %).",
+          "refs": [
+            "gutierrez-2011"
+          ],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
       "id": "cape-gooseberry",
       "names": {
         "common": "Cape gooseberry",
+        "es": "Aguaymanto",
+        "alternative_en": [
+          "goldenberry"
+        ],
         "alternative": [
           "aguaymanto",
-          "uchuva",
-          "goldenberry"
+          "uchuva"
         ]
       },
       "taxon": {
@@ -1794,36 +2531,44 @@
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
-        "source_record": "SR Legacy NDB 09138, 'Groundcherries, (cape-gooseberries or poha), raw'",
+        "source_record": "FDC ID 173043 (SR Legacy NDB 09138), 'Groundcherries, (cape-gooseberries or poha), raw'",
         "match": "proxy",
         "values": {
           "energy": {
             "value": 53,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
             "value": 85.4,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "protein": {
             "value": 1.9,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 0.7,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 11.2,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.8,
+            "verification": "verified"
           },
           "calcium": {
             "value": 9,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "iron": {
             "value": 1.0,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 11.0,
+            "verification": "verified"
           }
         }
       },
@@ -1852,6 +2597,7 @@
       "id": "cherimoya",
       "names": {
         "common": "Cherimoya",
+        "es": "Chirimoya",
         "alternative": [
           "chirimoya"
         ]
@@ -1866,47 +2612,56 @@
       "edible_part": "fruit",
       "food": {
         "description": "Cherimoya, raw",
-        "condition": "fresh",
-        "note": "Fat is omitted because secondary copies of the source record disagree."
+        "condition": "fresh"
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
-        "source_record": "SR Legacy NDB 09062, 'Cherimoya, raw'",
+        "source_record": "FDC ID 173953 (SR Legacy NDB 09062), 'Cherimoya, raw'",
         "match": "direct",
         "values": {
           "energy": {
             "value": 75,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
-            "value": 79.4,
-            "verification": "corroborated"
+            "value": 79.39,
+            "verification": "verified"
           },
           "protein": {
-            "value": 1.6,
-            "verification": "corroborated"
+            "value": 1.57,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.68,
+            "verification": "verified"
           },
           "carbohydrate_total": {
-            "value": 17.7,
-            "verification": "corroborated"
+            "value": 17.71,
+            "verification": "verified"
           },
           "fibre": {
             "value": 3.0,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "ash": {
             "value": 0.65,
-            "verification": "corroborated",
-            "note": "Corroborated by scaling a per-serving (160 g) listing of the source record to 100 g."
+            "verification": "verified"
           },
           "calcium": {
             "value": 10,
-            "verification": "corroborated",
-            "note": "Corroborated by scaling a per-serving (160 g) listing of the source record to 100 g."
+            "verification": "verified"
           },
           "iron": {
             "value": 0.27,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.16,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 12.6,
+            "verification": "verified"
           }
         }
       },
@@ -1930,6 +2685,7 @@
       "id": "lucuma",
       "names": {
         "common": "Lúcuma",
+        "es": "Lúcuma",
         "alternative": [
           "lucuma"
         ]
@@ -1947,9 +2703,51 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 35, 'Lúcuma'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 97,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 61.7,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 2.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.2,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 34.9,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 10.2,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.2,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 16,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.79,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.77,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -1970,8 +2768,11 @@
       "id": "tree-tomato",
       "names": {
         "common": "Tree tomato",
+        "es": "Tomate de árbol",
+        "alternative_en": [
+          "tamarillo"
+        ],
         "alternative": [
-          "tamarillo",
           "sachatomate",
           "tomate de árbol"
         ]
@@ -1989,9 +2790,47 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "B 19, 'Berenjena Costeña o tomate de árbol'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 41,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 87.5,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 1.3,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 9.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.1,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 18,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.2,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 2.3,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2013,9 +2852,12 @@
       "id": "pepino-dulce",
       "names": {
         "common": "Pepino dulce",
-        "alternative": [
-          "pepino",
+        "es": "Pepino dulce",
+        "alternative_en": [
           "sweet pepino"
+        ],
+        "alternative": [
+          "pepino"
         ]
       },
       "taxon": {
@@ -2031,9 +2873,48 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 61, 'Pepino dulce'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 26,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 92.3,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
+          },
+          "carbohydrate_total": {
+            "value": 7.0,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.4,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 30,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 29.7,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2055,6 +2936,7 @@
       "id": "granadilla",
       "names": {
         "common": "Sweet granadilla",
+        "es": "Granadilla",
         "alternative": [
           "granadilla"
         ]
@@ -2072,9 +2954,51 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 20, 'Granadilla'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 51,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 82.3,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 2.5,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 2.7,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 11.4,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 5.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.1,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 17,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 1.28,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 9.88,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2096,6 +3020,7 @@
       "id": "tumbo",
       "names": {
         "common": "Banana passionfruit",
+        "es": "Tumbo",
         "alternative": [
           "tumbo",
           "curuba"
@@ -2111,13 +3036,55 @@
       "crop_group": "fruit",
       "edible_part": "fruit",
       "food": {
-        "description": "Fruit pulp, fresh",
+        "description": "Fruit without the rind, fresh",
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 89, 'Tumbo serrano sin cáscara o poro poro'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 37,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 84.5,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 2.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.4,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 12.1,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 4.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.0,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 8,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.28,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 159.94,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2139,6 +3106,7 @@
       "id": "naranjilla",
       "names": {
         "common": "Naranjilla",
+        "es": "Naranjilla",
         "alternative": [
           "lulo"
         ]
@@ -2153,37 +3121,56 @@
       "edible_part": "fruit",
       "food": {
         "description": "Naranjilla (lulo) pulp, frozen, unsweetened",
-        "condition": "fresh",
-        "note": "Fibre is omitted because secondary copies of the source record disagree."
+        "condition": "fresh"
       },
       "composition": {
         "source": "usda-sr-legacy-2018",
-        "source_record": "FDC ID 167790, 'Naranjilla (lulo) pulp, frozen, unsweetened'",
+        "source_record": "FDC ID 167790 (SR Legacy NDB 09450), 'Naranjilla (lulo) pulp, frozen, unsweetened'",
         "match": "direct",
         "values": {
           "energy": {
             "value": 25,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "water": {
             "value": 93.05,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "protein": {
             "value": 0.44,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "fat": {
             "value": 0.22,
-            "verification": "corroborated"
+            "verification": "verified"
           },
           "carbohydrate_total": {
             "value": 5.9,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 1.1,
+            "verification": "verified"
           },
           "ash": {
             "value": 0.39,
-            "verification": "corroborated"
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 8,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.35,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.1,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 3.2,
+            "verification": "verified"
           }
         }
       },
@@ -2204,12 +3191,177 @@
       }
     },
     {
+      "id": "camu-camu",
+      "names": {
+        "common": "Camu-camu",
+        "es": "Camu camu",
+        "alternative": []
+      },
+      "taxon": {
+        "genus": "Myrciaria",
+        "species": "dubia",
+        "authority": "(Kunth) McVaugh",
+        "family": "Myrtaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit pulp, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "source": "ins-2023-tpca",
+        "source_record": "C 9, 'Camu-camu'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 24,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 93.3,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.1,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 5.9,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.2,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 28,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 2780.0,
+            "verification": "verified"
+          }
+        }
+      },
+      "notes": [
+        {
+          "kind": "bioactive",
+          "text": "The fruit is known for an exceptionally high ascorbic acid (vitamin C) content.",
+          "refs": [
+            "akter-2011"
+          ],
+          "checked": false
+        }
+      ],
+      "flags": []
+    },
+    {
+      "id": "tuna",
+      "names": {
+        "common": "Prickly pear",
+        "es": "Tuna",
+        "alternative_en": [
+          "Indian fig"
+        ],
+        "alternative": [
+          "tuna"
+        ]
+      },
+      "taxon": {
+        "genus": "Opuntia",
+        "species": "ficus-indica",
+        "authority": "(L.) Mill.",
+        "family": "Cactaceae"
+      },
+      "crop_group": "fruit",
+      "edible_part": "fruit",
+      "food": {
+        "description": "Fruit pulp, fresh",
+        "condition": "fresh"
+      },
+      "composition": {
+        "source": "ins-2023-tpca",
+        "source_record": "C 90, 'Tuna'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 46,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 82.3,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.8,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
+          },
+          "carbohydrate_total": {
+            "value": 15.4,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 3.3,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 1.5,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 16,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.3,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.12,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 19.5,
+            "verification": "verified"
+          }
+        }
+      },
+      "notes": [
+        {
+          "kind": "context",
+          "text": "A review of the species highlights its content of polyphenols, vitamins, polyunsaturated fatty acids and amino acids; it covers the cactus as a whole, not the fruit alone.",
+          "refs": [
+            "el-mostafa-2014"
+          ],
+          "checked": true
+        }
+      ],
+      "flags": []
+    },
+    {
       "id": "pacay",
       "names": {
         "common": "Pacay",
-        "alternative": [
-          "pacae",
+        "es": "Pacay",
+        "alternative_en": [
           "ice-cream bean"
+        ],
+        "alternative": [
+          "pacae"
         ]
       },
       "taxon": {
@@ -2225,9 +3377,47 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 54, 'Pacae o Guaba'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 56,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 84.1,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.6,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.1,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 14.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.4,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 14,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.4,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 1.4,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2249,6 +3439,7 @@
       "id": "mora",
       "names": {
         "common": "Andean blackberry",
+        "es": "Mora de Castilla",
         "alternative": [
           "mora de Castilla"
         ]
@@ -2266,12 +3457,63 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "C 158, 'Mora o zarzamora'",
+        "match": "proxy",
+        "values": {
+          "energy": {
+            "value": 27,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 86.4,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 2.1,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 10.4,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 6.0,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 33,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.37,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.29,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 19.31,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
-      "flags": [],
+      "flags": [
+        {
+          "code": "proxy-match",
+          "text": "The source names the fruit 'mora o zarzamora' without the species; the values are used for the Andean blackberry, Rubus glaucus."
+        }
+      ],
       "image": {
         "file": "assets/img/crops/mora.webp",
         "alt": "Andean blackberries ripening beside a flower",
@@ -2290,6 +3532,7 @@
       "id": "sauco",
       "names": {
         "common": "Andean elderberry",
+        "es": "Saúco",
         "alternative": [
           "sauco"
         ]
@@ -2303,16 +3546,67 @@
       "crop_group": "fruit",
       "edible_part": "fruit",
       "food": {
-        "description": "Fruit, fresh",
+        "description": "Elderberries, raw",
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "usda-sr-legacy-2018",
+        "source_record": "FDC ID 171727 (SR Legacy NDB 09088), 'Elderberries, raw'",
+        "match": "proxy",
+        "values": {
+          "energy": {
+            "value": 73,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 79.8,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.66,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 18.4,
+            "verification": "verified"
+          },
+          "fibre": {
+            "value": 7.0,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.64,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 38,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 1.6,
+            "verification": "verified"
+          },
+          "zinc": {
+            "value": 0.11,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 36.0,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
-      "flags": [],
+      "flags": [
+        {
+          "code": "proxy-match",
+          "text": "Values describe elderberries of a Sambucus species not named by the source and are used as a proxy for the Andean elderberry, Sambucus peruviana."
+        }
+      ],
       "image": {
         "file": "assets/img/crops/sauco.webp",
         "alt": "Andean elderberry shrub with fruit clusters",
@@ -2331,9 +3625,11 @@
       "id": "aji-amarillo",
       "names": {
         "common": "Ají amarillo",
-        "alternative": [
+        "es": "Ají amarillo",
+        "alternative_en": [
           "yellow chilli"
-        ]
+        ],
+        "alternative": []
       },
       "taxon": {
         "genus": "Capsicum",
@@ -2349,9 +3645,47 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "B 3, 'Ají amarillo fresco'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 39,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 88.9,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 0.9,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.7,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 8.8,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.7,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 31,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.9,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 60.0,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2373,6 +3707,7 @@
       "id": "rocoto",
       "names": {
         "common": "Rocoto",
+        "es": "Rocoto",
         "alternative": [
           "locoto"
         ]
@@ -2390,9 +3725,47 @@
         "condition": "fresh"
       },
       "composition": {
-        "status": "pending",
-        "note": "No documented source has been added yet. Candidate source: Tablas peruanas de composición de alimentos (Instituto Nacional de Salud, Peru), which could not be accessed for this release.",
-        "values": {}
+        "source": "ins-2023-tpca",
+        "source_record": "B 76, 'Rocoto fresco'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 36,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 89.5,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 1.2,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 8.2,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 0.6,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 6,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 14.9,
+            "verification": "verified"
+          }
+        }
       },
       "notes": [],
       "flags": [],
@@ -2409,6 +3782,85 @@
           "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
         }
       }
+    },
+    {
+      "id": "cushuro",
+      "names": {
+        "common": "Cushuro",
+        "es": "Cushuro",
+        "alternative": [
+          "llullucha",
+          "murmunta"
+        ]
+      },
+      "taxon": {
+        "genus": "Nostoc",
+        "species": "sphaericum",
+        "authority": "Vaucher ex Bornet & Flahault",
+        "family": "Nostocaceae",
+        "note": "A cyanobacterium, not a plant, so APG IV does not apply. It is collected from the wild rather than cultivated."
+      },
+      "crop_group": "cyanobacterium",
+      "edible_part": "colony",
+      "food": {
+        "description": "Colonies, dried",
+        "condition": "dried"
+      },
+      "composition": {
+        "source": "ins-2023-tpca",
+        "source_record": "L 22, 'Cushuro o nostoc deshidratada (alga)'",
+        "match": "direct",
+        "values": {
+          "energy": {
+            "value": 242,
+            "verification": "verified"
+          },
+          "water": {
+            "value": 15.1,
+            "verification": "verified"
+          },
+          "protein": {
+            "value": 29.0,
+            "verification": "verified"
+          },
+          "fat": {
+            "value": 0.5,
+            "verification": "verified"
+          },
+          "carbohydrate_total": {
+            "value": 46.9,
+            "verification": "verified"
+          },
+          "ash": {
+            "value": 8.5,
+            "verification": "verified"
+          },
+          "calcium": {
+            "value": 147,
+            "verification": "verified"
+          },
+          "iron": {
+            "value": 83.6,
+            "verification": "verified"
+          },
+          "vitamin_c": {
+            "value": 0.0,
+            "verification": "verified",
+            "note": "Reported as zero by the source: not present, or below the detection limit."
+          }
+        }
+      },
+      "notes": [
+        {
+          "kind": "context",
+          "text": "Colonies from Aruntaya (Moquegua, Peru) were reported to contain, per 100 g, 28.2 g protein, 62.1 g carbohydrate, 0.7 g fat, 0.9 g fibre, 7.7 g ash, 377.8 mg calcium and 4.8 mg iron, with 0.2 g moisture, so the analysed material was essentially dry.",
+          "refs": [
+            "mendez-ancca-2023"
+          ],
+          "checked": true
+        }
+      ],
+      "flags": []
     }
   ]
 }

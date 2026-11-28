@@ -13,7 +13,7 @@ interface DatasetFile {
   readonly metadata: { readonly title: string; readonly version: string };
   readonly crops: readonly {
     readonly id: string;
-    readonly names: { readonly common: string };
+    readonly names: { readonly common: string; readonly es: string };
     readonly composition: {
       readonly match?: 'direct' | 'proxy' | 'unknown';
       readonly values: Readonly<
@@ -55,6 +55,7 @@ export function adaptDataset(raw: unknown): AdaptedDataset {
     return {
       id: crop.id,
       nameEn: crop.names.common,
+      nameEs: crop.names.es,
       per100gRaw,
       verificationLevels: [...levels].sort(),
       isProxy: crop.composition.match === 'proxy',

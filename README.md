@@ -15,11 +15,11 @@ repository; see `plato-andino/SOURCE.txt` there).
 
 | Item | State |
 | --- | --- |
-| Dataset snapshot copied, validated and loaded (v0.3.0) | Done, tested on the real file |
-| Playable/locked derivation from verification levels | Done: 9 playable, 6 unverified, 15 without values |
+| Dataset snapshot copied, validated and loaded (v0.6.0) | Done, tested on the real file |
+| Playable/locked derivation | Done: all 35 crops verified; the 9 with sourced portions are playable, 26 wait for a portion |
 | Scoring on the five nutrients, with "no data" handling | Done, tested |
 | Portion layer (as-eaten serving from raw per-100 g values) | Done, tested |
-| Spanish and English string tables, Spanish food names | Done, tested |
+| Spanish and English string tables; Spanish food names from the dataset (`names.es`) | Done, tested |
 | Reference intakes, serving sizes, cooked-yield factors, scenario | Copied from version A with their citations (see below) |
 | Deployment | Published at <https://anniececy.com/plato-andino/version-b/> |
 
@@ -84,7 +84,6 @@ data/andean-crops/consumer-contract.schema.json  the fields and units the game r
 data/andean-crops/PIN.json                  name, version, source URL, sha256, retrieval date
 data/game/reference-intakes.json            daily reference intakes, each with its citation
 data/game/portions.json                     serving size and cooked-yield factor per food, each sourced
-data/game/local-names.json                  Spanish and local food names (until the dataset has them)
 data/game/scenarios.json                    scenarios, each with a reference profile and a meal share
 data/game/scoring.json                      scoring bands (game-design parameters)
 data/game/schemas/                          JSON Schemas for the files above
@@ -103,16 +102,18 @@ The build fails when:
 - the snapshot does not match its schema, or its sha256 differs from `PIN.json`;
 - a reference intake has no citation, or a portion factor has no source or is not flagged as an assumption;
 - the dataset reports a scored nutrient in another unit than kcal, g, g, mg, mg;
-- a playable crop has no sourced portion, or a crop has no Spanish name;
-- a crop the dataset flags as not eaten raw (tarwi) is given an uncooked portion;
+- a crop has no Spanish name (`names.es`) in the dataset;
+- tarwi, or any crop the dataset flags as not eaten raw, is given an uncooked portion;
 - a crop carries a verification level the code does not know.
 
 ## Rules the code enforces
 
-- **Playable or locked** is derived from the dataset's verification levels
-  (`src/domain/catalogue.ts`): `corroborated` or `verified` is playable;
-  `unverified`, or no values, is a locked "coming soon" card. A crop with mixed
-  levels stays locked. Locked cards carry no nutrient values.
+- **Playable or locked** (`src/domain/catalogue.ts`): a crop is playable when
+  every scored value is `corroborated` or `verified` **and** it has a sourced
+  portion. Otherwise it is a locked "coming soon" card: `unverified` values, no
+  values, or values verified but portion awaiting a source. Locked cards carry
+  no nutrient values. Tarwi is never given an uncooked portion (SPEC section 5),
+  whether or not the dataset flags it.
 - **"No data" is never zero** (`src/domain/scoring.ts`). A missing value is
   left out of that nutrient's total and the food is named. If no food on the
   plate has data for a nutrient, the nutrient gets no score and is left out of

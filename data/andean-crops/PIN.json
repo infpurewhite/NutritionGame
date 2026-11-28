@@ -1,7 +1,7 @@
 {
   "name": "Andean crops nutrient composition dataset",
-  "version": "0.3.0",
+  "version": "0.6.0",
   "sourceUrl": "https://anniececy.com/andean-crops/data/andean-crops.json",
-  "sha256": "7cd5f3a2866525d1432f0fc9b51a79604aab2c883ca637eaff119e191c3eb714",
-  "retrievedOn": "2026-11-17"
+  "sha256": "22c703861396f4c5fec387c4a0d09dcfb7444f71b91b13599e9817c4f3aa0c02",
+  "retrievedOn": "2026-11-28"
 }

@@ -22,6 +22,7 @@ export const en = {
   'foods.locked.heading': 'Coming soon',
   'foods.locked.unverified': 'Values awaiting verification',
   'foods.locked.no_values': 'No nutrient values yet',
+  'foods.locked.no_portion': 'Portion size awaiting a source',
 
   'plate.heading': 'Your plate',
   'plate.empty': 'Add portions to build your plate.',

@@ -165,12 +165,18 @@
           "names": {
             "type": "object",
             "required": [
-              "common"
+              "common",
+              "es"
             ],
             "properties": {
               "common": {
                 "type": "string",
                 "minLength": 1
+              },
+              "es": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Spanish name (SPEC section 7)."
               },
               "alternative": {
                 "type": "array",

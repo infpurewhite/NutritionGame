@@ -1,6 +1,7 @@
 /**
- * The real build inputs: the pinned dataset snapshot plus the reference
- * intakes, portions and scenario copied from version A (NutritionGame f847454).
+ * The real build inputs: the pinned dataset snapshot (v0.6.0) plus the
+ * reference intakes, portions and scenario copied from version A
+ * (NutritionGame f847454).
  */
 import { join } from 'node:path';
 
@@ -21,9 +22,12 @@ const profile = data.referenceProfiles.find((p) => p.id === scenario.referencePr
 const targets = mealTargets(profile, scenario, data.scoring);
 
 describe('real game data', () => {
-  it('loads all 30 crops with a sourced portion for each of the 9 playable ones', () => {
-    expect(data.foods).toHaveLength(30);
+  it('loads 35 crops: 9 with sourced portions are playable, 26 wait for one', () => {
+    expect(data.foods).toHaveLength(35);
     expect(playable).toHaveLength(9);
+    const locked = data.foods.filter((food) => food.status === 'locked');
+    expect(locked).toHaveLength(26);
+    expect(new Set(locked.map((food) => food.lockReason))).toEqual(new Set(['no_portion']));
     for (const food of playable) {
       expect(food.portion.servingSource.citation.length, food.id).toBeGreaterThan(10);
       expect(food.portion.yieldSource.citation.length, food.id).toBeGreaterThan(10);
@@ -51,15 +55,16 @@ describe('real game data', () => {
   });
 
   it('keeps the dataset gaps as "no data" on a real plate', () => {
-    const plate = ['quinoa', 'lima-bean', 'potato'].map((id) => ({
+    const plate = ['quinoa', 'cape-gooseberry', 'potato'].map((id) => ({
       foodId: id,
       servings: 1,
       perServing: byId[id]!.perServing,
     }));
     const score = scorePlate(plate, targets);
-    expect(score.nutrients.iron.missingFoodIds).toEqual(['lima-bean']);
-    expect(score.nutrients.calcium.missingFoodIds).toEqual(['potato']);
-    expect(score.nutrients.iron.isPartial).toBe(true);
+    expect(score.nutrients.fibre.missingFoodIds).toEqual(['cape-gooseberry']);
+    expect(score.nutrients.fibre.isPartial).toBe(true);
+    expect(score.nutrients.iron.missingFoodIds).toEqual([]);
+    expect(score.nutrients.calcium.missingFoodIds).toEqual([]);
     expect(score.overall).not.toBeNull();
   });
 });

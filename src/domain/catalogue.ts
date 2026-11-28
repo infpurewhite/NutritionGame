@@ -74,17 +74,26 @@ export function classifyCrop(
 }
 
 /**
- * Build the food catalogue from normalised crops plus the game-side layers.
+ * Crops that must never be presented as edible raw (SPEC section 5: the raw
+ * tarwi seed is toxic). Applied on top of the dataset's own "not eaten raw"
+ * flag, which a dataset release may drop when its record describes the cooked
+ * food.
+ */
+export const NEVER_RAW_CROP_IDS: readonly string[] = ['tarwi'];
+
+/**
+ * Build the food catalogue from normalised crops plus the portion layer.
  *
- * Fails when a crop has no Spanish name, when a playable crop has no sourced
- * portion (SPEC section 6: unsourced factors are not allowed), when a crop
- * flagged as not eaten raw is given an uncooked portion, or when a portion or
- * name refers to a crop that is not in the dataset.
+ * A crop whose values are playable but which has no sourced portion stays
+ * locked (`no_portion`): scoring uses the as-eaten portion, and SPEC section 6
+ * does not allow unsourced portion factors.
+ *
+ * Fails when a crop that must not be eaten raw is given an uncooked portion,
+ * or when a portion refers to a crop that is not in the dataset.
  */
 export function buildCatalogue(
   crops: readonly CropRecord[],
   portions: Readonly<Record<string, PortionSpec>>,
-  spanishNames: Readonly<Record<string, string>>,
 ): Food[] {
   const issues: string[] = [];
   const foods: Food[] = [];
@@ -93,17 +102,9 @@ export function buildCatalogue(
   for (const id of Object.keys(portions)) {
     if (!cropIds.has(id)) issues.push(`portion defined for unknown crop "${id}"`);
   }
-  for (const id of Object.keys(spanishNames)) {
-    if (!cropIds.has(id)) issues.push(`Spanish name defined for unknown crop "${id}"`);
-  }
 
   for (const crop of crops) {
-    const spanishName = spanishNames[crop.id];
-    if (spanishName === undefined) {
-      issues.push(`crop "${crop.id}" has no Spanish name in the local-names file`);
-      continue;
-    }
-    const names: LocalisedText = { en: crop.nameEn, es: spanishName };
+    const names: LocalisedText = { en: crop.nameEn, es: crop.nameEs };
     let status: FoodStatus;
     try {
       status = classifyCrop(crop);
@@ -120,13 +121,12 @@ export function buildCatalogue(
     }
     const portion = portions[crop.id];
     if (portion === undefined) {
-      issues.push(
-        `playable crop "${crop.id}" has no sourced portion (serving size and cooked-yield factor)`,
-      );
+      foods.push({ id: crop.id, status: 'locked', names, lockReason: 'no_portion' });
       continue;
     }
-    if (crop.notEatenRaw && portion.state === 'uncooked') {
-      issues.push(`crop "${crop.id}" is flagged as not eaten raw but its portion is uncooked`);
+    const neverRaw = crop.notEatenRaw || NEVER_RAW_CROP_IDS.includes(crop.id);
+    if (neverRaw && portion.state === 'uncooked') {
+      issues.push(`crop "${crop.id}" must not be eaten raw but its portion is uncooked`);
       continue;
     }
     foods.push({

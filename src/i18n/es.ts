@@ -26,6 +26,7 @@ export const es: Readonly<Record<StringKey, string>> = {
   'foods.locked.heading': 'Próximamente',
   'foods.locked.unverified': 'Valores pendientes de verificación',
   'foods.locked.no_values': 'Aún sin valores nutricionales',
+  'foods.locked.no_portion': 'Porción pendiente de fuente',
 
   'plate.heading': 'Tu plato',
   'plate.empty': 'Agrega porciones para armar tu plato.',

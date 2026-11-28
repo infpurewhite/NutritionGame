@@ -35,6 +35,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
   {
     id: 'fixture-grain',
     nameEn: 'Fixture grain (synthetic)',
+    nameEs: 'Grano de prueba (sintético)',
     per100gRaw: { energy: 400, protein: 10, fibre: 10, iron: 10, calcium: 100 },
     verificationLevels: ['verified'],
     isProxy: false,
@@ -43,6 +44,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
   {
     id: 'fixture-tuber',
     nameEn: 'Fixture tuber (synthetic)',
+    nameEs: 'Tubérculo de prueba (sintético)',
     per100gRaw: { energy: 100, protein: 2, fibre: 2, iron: 1, calcium: 10 },
     verificationLevels: ['corroborated'],
     isProxy: false,
@@ -51,6 +53,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
   {
     id: 'fixture-fruit',
     nameEn: 'Fixture fruit (synthetic)',
+    nameEs: 'Fruta de prueba (sintética)',
     per100gRaw: { energy: 50, protein: 1, fibre: 5, iron: null, calcium: 20 },
     verificationLevels: ['corroborated'],
     isProxy: true,
@@ -59,6 +62,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
   {
     id: 'fixture-legume',
     nameEn: 'Fixture legume (synthetic)',
+    nameEs: 'Legumbre de prueba (sintética)',
     per100gRaw: { energy: 300, protein: 20, fibre: 15, iron: 5, calcium: 80 },
     verificationLevels: ['unverified'],
     isProxy: false,
@@ -67,6 +71,7 @@ export const FIXTURE_CROPS: readonly CropRecord[] = [
   {
     id: 'fixture-root',
     nameEn: 'Fixture root (synthetic)',
+    nameEs: 'Raíz de prueba (sintética)',
     per100gRaw: { energy: null, protein: null, fibre: null, iron: null, calcium: null },
     verificationLevels: [],
     isProxy: false,
@@ -78,14 +83,6 @@ export const FIXTURE_PORTIONS: Readonly<Record<string, PortionSpec>> = {
   'fixture-grain': portion(150, 3, 'cooked'),
   'fixture-tuber': portion(200, 1, 'cooked'),
   'fixture-fruit': portion(100, 1, 'uncooked'),
-};
-
-export const FIXTURE_SPANISH_NAMES: Readonly<Record<string, string>> = {
-  'fixture-grain': 'Grano de prueba (sintético)',
-  'fixture-tuber': 'Tubérculo de prueba (sintético)',
-  'fixture-fruit': 'Fruta de prueba (sintética)',
-  'fixture-legume': 'Legumbre de prueba (sintética)',
-  'fixture-root': 'Raíz de prueba (sintética)',
 };
 
 export const FIXTURE_PROFILE: ReferenceProfile = {
@@ -129,7 +126,7 @@ const fixture: GameData = {
     sourceUrl: 'https://example.invalid/fixture',
     sha256: '0'.repeat(64),
   },
-  foods: buildCatalogue(FIXTURE_CROPS, FIXTURE_PORTIONS, FIXTURE_SPANISH_NAMES),
+  foods: buildCatalogue(FIXTURE_CROPS, FIXTURE_PORTIONS),
   scenarios: [FIXTURE_SCENARIO],
   referenceProfiles: [FIXTURE_PROFILE],
   scoring: FIXTURE_SCORING,

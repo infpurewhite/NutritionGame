@@ -52,7 +52,7 @@ function syntheticFiles(): Files {
       crops: [
         {
           id: 'alpha',
-          names: { common: 'Alpha' },
+          names: { common: 'Alpha', es: 'alfa' },
           composition: {
             match: 'proxy',
             values: {
@@ -66,11 +66,11 @@ function syntheticFiles(): Files {
         },
         {
           id: 'beta',
-          names: { common: 'Beta' },
+          names: { common: 'Beta', es: 'beta' },
           composition: { match: 'unknown', values: { energy: value(300, 'unverified') } },
           flags: [{ code: 'not-eaten-raw' }],
         },
-        { id: 'gamma', names: { common: 'Gamma' }, composition: { values: {} }, flags: [] },
+        { id: 'gamma', names: { common: 'Gamma', es: 'gama' }, composition: { values: {} }, flags: [] },
       ],
     },
     datasetSchema: JSON.parse(readFileSync(join(REPO, DATA_PATHS.datasetSchema), 'utf8')),
@@ -97,7 +97,6 @@ function syntheticFiles(): Files {
       ],
     },
     portions: { portions: { alpha: PORTION } },
-    localNames: { notice: 'synthetic', names: { alpha: { es: 'alfa' }, beta: { es: 'beta' }, gamma: { es: 'gama' } } },
     scenarios: {
       scenarios: [
         {
@@ -292,11 +291,23 @@ describe('loadGameData', () => {
     expect(issuesOf(() => loadGameData(root))).toContain('unknown reference profile "nobody"');
   });
 
-  it('fails when a playable crop has no sourced portion', () => {
+  it('locks a crop with playable values until it has a sourced portion', () => {
     const root = makeRoot((files) => {
       files.portions['portions'] = {};
     });
-    expect(() => loadGameData(root)).toThrow(/"alpha" has no sourced portion/);
+    expect(loadGameData(root).foods[0]).toEqual({
+      id: 'alpha',
+      status: 'locked',
+      names: { en: 'Alpha', es: 'alfa' },
+      lockReason: 'no_portion',
+    });
+  });
+
+  it('fails when a crop has no Spanish name in the dataset', () => {
+    const root = makeRoot((files) => {
+      delete files.dataset['crops'][2].names.es;
+    });
+    expect(issuesOf(() => loadGameData(root))).toContain('data/andean-crops/andean-crops.json/crops/2/names');
   });
 
   it('fails when a crop flagged as not eaten raw gets an uncooked portion', () => {
@@ -304,6 +315,6 @@ describe('loadGameData', () => {
       files.dataset['crops'][1].composition.values.energy.verification = 'verified';
       files.portions['portions'].beta = { ...PORTION, state: 'uncooked', cookedYieldFactor: 1 };
     });
-    expect(() => loadGameData(root)).toThrow(/"beta" is flagged as not eaten raw/);
+    expect(() => loadGameData(root)).toThrow(/"beta" must not be eaten raw/);
   });
 });

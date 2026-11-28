@@ -35,6 +35,8 @@ export interface SourceRef {
 export interface CropRecord {
   readonly id: string;
   readonly nameEn: string;
+  /** Spanish name from the dataset's `names.es` field. */
+  readonly nameEs: string;
   /** Per 100 g edible portion, raw state, in game units. */
   readonly per100gRaw: NutrientValues;
   /**
@@ -64,7 +66,7 @@ export interface PortionSpec {
   readonly assumption: true;
 }
 
-export type LockReason = 'unverified' | 'no_values';
+export type LockReason = 'unverified' | 'no_values' | 'no_portion';
 
 export interface PlayableFood {
   readonly id: string;

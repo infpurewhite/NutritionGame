@@ -33,7 +33,6 @@ export const DATA_PATHS = {
   pin: 'data/andean-crops/PIN.json',
   referenceIntakes: 'data/game/reference-intakes.json',
   portions: 'data/game/portions.json',
-  localNames: 'data/game/local-names.json',
   scenarios: 'data/game/scenarios.json',
   scoring: 'data/game/scoring.json',
 } as const;
@@ -42,7 +41,6 @@ const GAME_SCHEMAS = {
   pin: 'data/game/schemas/pin.schema.json',
   referenceIntakes: 'data/game/schemas/reference-intakes.schema.json',
   portions: 'data/game/schemas/portions.schema.json',
-  localNames: 'data/game/schemas/local-names.schema.json',
   scenarios: 'data/game/schemas/scenarios.schema.json',
   scoring: 'data/game/schemas/scoring.schema.json',
 } as const;
@@ -150,11 +148,6 @@ export function loadGameData(root: string): GameData {
     'portions',
     issues,
   );
-  const names = checkedGameFile<{ names: Record<string, { es: string }> }>(
-    root,
-    'localNames',
-    issues,
-  );
   const scenarios = checkedGameFile<{ scenarios: Scenario[]; provenance?: SourceRef }>(
     root,
     'scenarios',
@@ -167,7 +160,6 @@ export function loadGameData(root: string): GameData {
     pin === null ||
     intakes === null ||
     portions === null ||
-    names === null ||
     scenarios === null ||
     scoring === null
   ) {
@@ -201,10 +193,7 @@ export function loadGameData(root: string): GameData {
   }
   if (issues.length > 0) throw new GameDataError(issues);
 
-  const spanishNames = Object.fromEntries(
-    Object.entries(names.names).map(([id, entry]) => [id, entry.es]),
-  );
-  const foods = buildCatalogue(adapted.crops, portions.portions, spanishNames);
+  const foods = buildCatalogue(adapted.crops, portions.portions);
 
   return {
     dataset: { name: pin.name, version: pin.version, sourceUrl: pin.sourceUrl, sha256 },
