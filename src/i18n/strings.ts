@@ -59,6 +59,7 @@ export interface StringTable {
   comingSoonBadge: string;
   lockReasonUnverified: string;
   lockReasonNoData: string;
+  lockReasonNoPortion: string;
   tarwiSafetyWarning: string;
   showLockedToggle: string;
   hideLockedToggle: string;
@@ -146,10 +147,11 @@ export const STRINGS: Record<Locale, StringTable> = {
 
     lockedHeading: 'Próximamente',
     lockedSubtitle:
-      'Cultivos bloqueados automáticamente hasta que sus valores sean verificados en el conjunto de datos.',
+      'Se desbloquean solos cuando sus valores están verificados en el conjunto de datos y su porción tiene una fuente.',
     comingSoonBadge: 'Próximamente',
     lockReasonUnverified: 'Valores sin verificar',
     lockReasonNoData: 'Sin datos aún',
+    lockReasonNoPortion: 'Porción pendiente de fuente',
     tarwiSafetyWarning: 'Semilla cruda tóxica: requiere desamargado antes de consumir.',
     showLockedToggle: 'Mostrar {count} cultivos en espera',
     hideLockedToggle: 'Ocultar cultivos en espera',
@@ -245,10 +247,11 @@ export const STRINGS: Record<Locale, StringTable> = {
 
     lockedHeading: 'Coming soon',
     lockedSubtitle:
-      'Automatically locked until their nutrient values are verified in the dataset.',
+      'Unlocked automatically once their values are verified in the dataset and their portion size has a source.',
     comingSoonBadge: 'Coming soon',
     lockReasonUnverified: 'Unverified values',
     lockReasonNoData: 'Awaiting data',
+    lockReasonNoPortion: 'Portion size awaiting a source',
     tarwiSafetyWarning: 'Raw seed is toxic — must be debittered and cooked before eating.',
     showLockedToggle: 'Show {count} locked crops',
     hideLockedToggle: 'Hide locked crops',

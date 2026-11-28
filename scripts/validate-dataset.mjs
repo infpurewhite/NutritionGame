@@ -52,6 +52,7 @@ function main() {
   }
 
   const derivedPlayableIds = [];
+  const awaitingPortionIds = [];
 
   for (const crop of dataset.crops) {
     if (cropIds.has(crop.id)) {
@@ -73,8 +74,11 @@ function main() {
           hasPlayableNutrient = true;
         }
       }
-      if (hasPlayableNutrient) {
+      // A crop with verified values is playable only once it has a sourced portion (SPEC.md §6).
+      if (hasPlayableNutrient && portions.portions[crop.id]) {
         derivedPlayableIds.push(crop.id);
+      } else if (hasPlayableNutrient) {
+        awaitingPortionIds.push(crop.id);
       }
     }
 
@@ -86,17 +90,16 @@ function main() {
       }
     }
 
-    // Verify Spanish local name entry exists
-    if (!localNames.crops[crop.id]?.es) {
-      fail(`Missing Spanish local name for crop "${crop.id}" in src/data/local-names.json`);
+    // Verify a Spanish name exists: the dataset's names.es, or the local fallback file
+    if (!crop.names?.es && !localNames.crops[crop.id]?.es) {
+      fail(`Missing Spanish name for crop "${crop.id}" (dataset names.es or src/data/local-names.json)`);
     }
   }
 
-  // 3. Verify every derived playable crop has a sourced portion & cooked-yield factor
-  for (const playableId of derivedPlayableIds) {
-    const portion = portions.portions[playableId];
-    if (!portion) {
-      fail(`Playable crop "${playableId}" is missing from src/data/portions.json`);
+  // 3. Verify every portion refers to a dataset crop and has a sourced serving & cooked-yield factor
+  for (const [playableId, portion] of Object.entries(portions.portions)) {
+    if (!cropIds.has(playableId)) {
+      fail(`Portion defined for unknown crop "${playableId}" in src/data/portions.json`);
     }
     if (typeof portion.servingGrams !== 'number' || portion.servingGrams <= 0) {
       fail(`Invalid servingGrams for "${playableId}"`);
@@ -119,7 +122,8 @@ function main() {
 
   console.log(
     `[validate-dataset] OK — dataset v${dataset.metadata.version} (${dataset.metadata.date}), ` +
-      `${dataset.crops.length} crops (${derivedPlayableIds.length} playable, ${dataset.crops.length - derivedPlayableIds.length} locked).`
+      `${dataset.crops.length} crops (${derivedPlayableIds.length} playable, ${dataset.crops.length - derivedPlayableIds.length} locked, ` +
+      `of which ${awaitingPortionIds.length} verified but awaiting a sourced portion).`
   );
 }
 

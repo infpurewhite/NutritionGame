@@ -51,7 +51,10 @@ export interface DatasetCrop {
   id: string;
   names: {
     common: string;
+    /** Spanish name (dataset v0.4.0 and later). */
+    es?: string;
     alternative?: string[];
+    alternative_en?: string[];
   };
   taxon: {
     genus: string;
@@ -159,7 +162,7 @@ export interface DerivedCrop {
   foodCondition: string;
   names: LocalizedText;
   playable: boolean;
-  lockReason: 'unverified' | 'no_data' | null;
+  lockReason: 'unverified' | 'no_data' | 'no_portion' | null;
   isProxy: boolean;
   toxicRawWarning: boolean;
   rawValuesPer100g: VerifiedNutrientMap;

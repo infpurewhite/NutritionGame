@@ -45,7 +45,9 @@ export function LockedCropsSection({
             const reasonText =
               crop.lockReason === 'unverified'
                 ? s.lockReasonUnverified
-                : s.lockReasonNoData;
+                : crop.lockReason === 'no_portion'
+                  ? s.lockReasonNoPortion
+                  : s.lockReasonNoData;
 
             return (
               <article key={crop.id} class="locked-card" aria-label={name}>

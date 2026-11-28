@@ -167,7 +167,8 @@
           "enum": [
             "energy",
             "proximate",
-            "mineral"
+            "mineral",
+            "vitamin"
           ]
         },
         "decimals": {
@@ -294,6 +295,11 @@
             "not-checked",
             "not-applicable"
           ]
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}$",
+          "description": "Language of the source's record names (ISO 639-1); the dataset language if absent."
         }
       },
       "allOf": [
@@ -450,12 +456,25 @@
             "common": {
               "$ref": "#/$defs/nonEmptyText"
             },
+            "es": {
+              "$ref": "#/$defs/nonEmptyText",
+              "description": "Common name in Spanish, shown in the Spanish interface."
+            },
+            "alternative_en": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/nonEmptyText"
+              },
+              "description": "Other English names; shown only in the English interface."
+            },
             "alternative": {
               "type": "array",
               "uniqueItems": true,
               "items": {
                 "$ref": "#/$defs/nonEmptyText"
-              }
+              },
+              "description": "Local names (Spanish, Quechua, Aymara and others); shown in both interfaces."
             }
           }
         },
@@ -499,9 +518,11 @@
             "pseudocereal",
             "cereal",
             "grain_legume",
+            "oilseed",
             "root_tuber",
             "fruit",
-            "vegetable"
+            "vegetable",
+            "cyanobacterium"
           ]
         },
         "edible_part": {
@@ -512,7 +533,8 @@
             "tuber",
             "root",
             "rhizome",
-            "fruit"
+            "fruit",
+            "colony"
           ]
         },
         "food": {
@@ -531,7 +553,8 @@
               "enum": [
                 "dry",
                 "dried",
-                "fresh"
+                "fresh",
+                "cooked"
               ]
             },
             "note": {

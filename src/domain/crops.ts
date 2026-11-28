@@ -5,6 +5,7 @@ import {
   type DerivedCrop,
   type DerivedCropCatalog,
   type LocalNamesFile,
+  type PortionRule,
   type ScoredNutrient,
   type VerificationLevel,
   type VerifiedNutrientMap,
@@ -23,19 +24,24 @@ export function isVerifiedForPlay(verification: VerificationLevel | undefined): 
 }
 
 /**
- * Derives playable vs locked status strictly from the dataset's verification fields.
+ * Derives playable vs locked status from the dataset's verification fields.
  * Never hard-codes crop IDs for playability so crops unlock automatically when verified.
+ *
+ * When `portions` is given, a crop with verified values but no sourced portion stays
+ * locked ('no_portion'): scoring uses the as-eaten portion, and SPEC.md §6 does not
+ * allow unsourced portion factors.
  */
 export function deriveCropAvailability(
   dataset: AndeanCropsDataset,
-  localNames?: LocalNamesFile
+  localNames?: LocalNamesFile,
+  portions?: Record<string, PortionRule>
 ): DerivedCropCatalog {
   const playable: DerivedCrop[] = [];
   const locked: DerivedCrop[] = [];
   const byId: Record<string, DerivedCrop> = {};
 
   for (const crop of dataset.crops) {
-    const derived = deriveSingleCrop(crop, localNames);
+    const derived = deriveSingleCrop(crop, localNames, portions);
     byId[derived.id] = derived;
     if (derived.playable) {
       playable.push(derived);
@@ -47,7 +53,11 @@ export function deriveCropAvailability(
   return { playable, locked, byId };
 }
 
-function deriveSingleCrop(crop: DatasetCrop, localNames?: LocalNamesFile): DerivedCrop {
+function deriveSingleCrop(
+  crop: DatasetCrop,
+  localNames?: LocalNamesFile,
+  portions?: Record<string, PortionRule>
+): DerivedCrop {
   const values = crop.composition?.values ?? {};
   const rawValuesPer100g: VerifiedNutrientMap = {
     energy: null,
@@ -75,18 +85,23 @@ function deriveSingleCrop(crop: DatasetCrop, localNames?: LocalNamesFile): Deriv
     }
   }
 
-  const playable = verifiedCount > 0;
+  const hasVerifiedValues = verifiedCount > 0;
+  const hasPortion = portions === undefined || portions[crop.id] !== undefined;
+  const playable = hasVerifiedValues && hasPortion;
   const lockReason: DerivedCrop['lockReason'] = playable
     ? null
-    : unverifiedCount > 0
-      ? 'unverified'
-      : 'no_data';
+    : hasVerifiedValues
+      ? 'no_portion'
+      : unverifiedCount > 0
+        ? 'unverified'
+        : 'no_data';
 
   const mappedNames = localNames?.crops[crop.id];
   const fallbackEs = crop.names.alternative?.[0] ?? crop.names.common;
   const names = {
     en: mappedNames?.en ?? crop.names.common,
-    es: mappedNames?.es ?? fallbackEs,
+    // SPEC.md §7: Spanish names belong in the dataset; the local file is only a fallback.
+    es: crop.names.es ?? mappedNames?.es ?? fallbackEs,
   };
 
   return {

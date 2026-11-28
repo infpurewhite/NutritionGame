@@ -66,7 +66,10 @@ export function App() {
   const [plateItems, setPlateItems] = useState<PlateItem[]>(loadInitialPlate);
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  const catalog = useMemo(() => deriveCropAvailability(dataset, localNames), []);
+  const catalog = useMemo(
+    () => deriveCropAvailability(dataset, localNames, portionsFile.portions),
+    []
+  );
   const allCrops = useMemo(
     () => [...catalog.playable, ...catalog.locked],
     [catalog]

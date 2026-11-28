@@ -25,8 +25,8 @@ const referenceIntakes = referenceIntakesJson as unknown as ReferenceIntakesFile
 const lunchScenario = (scenariosJson as unknown as Scenario[])[0];
 
 describe('deriveCropAvailability (playable/locked derivation)', () => {
-  it('derives the exact 9 playable crops and 21 locked crops from v0.3.0 verification fields', () => {
-    const catalog = deriveCropAvailability(dataset, localNames);
+  it('derives 9 playable and 26 locked crops from v0.6.0 verification fields and sourced portions', () => {
+    const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
 
     const playableIds = catalog.playable.map((c) => c.id).sort();
     expect(playableIds).toEqual([
@@ -40,18 +40,27 @@ describe('deriveCropAvailability (playable/locked derivation)', () => {
       'potato',
       'quinoa',
     ]);
-    expect(catalog.locked).toHaveLength(21);
+    expect(catalog.locked).toHaveLength(26);
+    // Every v0.6.0 value is verified, so each locked crop is waiting only for a sourced portion
+    expect(new Set(catalog.locked.map((c) => c.lockReason))).toEqual(new Set(['no_portion']));
   });
 
-  it('automatically unlocks a crop when a nutrient is upgraded to verified/corroborated', () => {
+  it('automatically unlocks a crop once a nutrient is verified and it has a sourced portion', () => {
     const cloned: AndeanCropsDataset = structuredClone(dataset);
     const canihua = cloned.crops.find((c) => c.id === 'canihua');
     expect(canihua).toBeDefined();
+    for (const entry of Object.values(canihua?.composition?.values ?? {})) {
+      entry.verification = 'unverified';
+    }
+    expect(deriveCropAvailability(cloned, localNames, portions.portions).byId['canihua'].lockReason).toBe(
+      'unverified'
+    );
+
     if (canihua?.composition?.values?.protein) {
       canihua.composition.values.protein.verification = 'verified';
     }
-
-    const catalog = deriveCropAvailability(cloned, localNames);
+    const withCanihuaPortion = { ...portions.portions, canihua: portions.portions['quinoa'] };
+    const catalog = deriveCropAvailability(cloned, localNames, withCanihuaPortion);
     expect(catalog.byId['canihua'].playable).toBe(true);
     expect(catalog.byId['canihua'].rawValuesPer100g.protein).toBe(15.7);
     // Unverified nutrients on that same crop remain null ("no data")
@@ -60,7 +69,7 @@ describe('deriveCropAvailability (playable/locked derivation)', () => {
   });
 
   it('flags proxy matches (kiwicha and cape-gooseberry) from composition.match', () => {
-    const catalog = deriveCropAvailability(dataset, localNames);
+    const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
     const proxyIds = catalog.playable
       .filter((c) => c.isProxy)
       .map((c) => c.id)
@@ -68,22 +77,35 @@ describe('deriveCropAvailability (playable/locked derivation)', () => {
     expect(proxyIds).toEqual(['cape-gooseberry', 'kiwicha']);
   });
 
-  it('distinguishes unverified vs no_data lock reasons and flags tarwi toxic raw warning', () => {
-    const catalog = deriveCropAvailability(dataset, localNames);
+  it('distinguishes no_portion, unverified and no_data lock reasons and flags tarwi toxic raw warning', () => {
+    const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
     expect(catalog.byId['tarwi'].playable).toBe(false);
-    expect(catalog.byId['tarwi'].lockReason).toBe('unverified');
+    expect(catalog.byId['tarwi'].lockReason).toBe('no_portion');
     expect(catalog.byId['tarwi'].toxicRawWarning).toBe(true);
 
-    expect(catalog.byId['ulluco'].playable).toBe(false);
-    expect(catalog.byId['ulluco'].lockReason).toBe('no_data');
+    const cloned: AndeanCropsDataset = structuredClone(dataset);
+    for (const entry of Object.values(cloned.crops.find((c) => c.id === 'tarwi')?.composition?.values ?? {})) {
+      entry.verification = 'unverified';
+    }
+    const ulluco = cloned.crops.find((c) => c.id === 'ulluco');
+    if (ulluco?.composition) {
+      ulluco.composition.values = {};
+    }
+    const reasons = deriveCropAvailability(cloned, localNames, portions.portions);
+    expect(reasons.byId['tarwi'].lockReason).toBe('unverified');
+    expect(reasons.byId['ulluco'].playable).toBe(false);
+    expect(reasons.byId['ulluco'].lockReason).toBe('no_data');
+
     expect(catalog.byId['ulluco'].names.es).toBe('Olluco');
     expect(catalog.byId['cape-gooseberry'].names.es).toBe('Aguaymanto');
     expect(catalog.byId['purple-corn'].names.es).toBe('Maíz morado');
+    // New in v0.6.0 and absent from the local names file: the dataset supplies the Spanish name
+    expect(catalog.byId['nuna'].names.es).toBe('Ñuña');
   });
 });
 
 describe('portion conversion and as-eaten nutrient calculations', () => {
-  const catalog = deriveCropAvailability(dataset, localNames);
+  const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
 
   it('converts cooked quinoa serving (140 g) to dry raw equivalent via yield factor 3.06', () => {
     const quinoa = catalog.byId['quinoa'];
@@ -102,25 +124,24 @@ describe('portion conversion and as-eaten nutrient calculations', () => {
   it('preserves null for missing nutrients rather than converting to zero', () => {
     const potato = catalog.byId['potato'];
     const potatoNutrients = calculatePortionNutrients(potato, portions.portions['potato'], 1);
-    // Potato in v0.3.0 has no calcium value
-    expect(potatoNutrients.calcium).toBeNull();
     expect(potatoNutrients.energy).toBeCloseTo(77 * 1.1, 2);
+    // v0.6.0 adds a verified potato calcium value (12 mg/100 g raw)
+    expect(potatoNutrients.calcium).toBeCloseTo(12 * 1.1, 2);
 
-    const naranjilla = catalog.byId['naranjilla'];
-    const naranjillaNutrients = calculatePortionNutrients(
-      naranjilla,
-      portions.portions['naranjilla'],
+    // Cape gooseberry has no fibre value in v0.6.0
+    const gooseberry = catalog.byId['cape-gooseberry'];
+    const gooseberryNutrients = calculatePortionNutrients(
+      gooseberry,
+      portions.portions['cape-gooseberry'],
       1
     );
-    expect(naranjillaNutrients.energy).toBeCloseTo(25 * 1.4, 2);
-    expect(naranjillaNutrients.fibre).toBeNull();
-    expect(naranjillaNutrients.iron).toBeNull();
-    expect(naranjillaNutrients.calcium).toBeNull();
+    expect(gooseberryNutrients.energy).toBeCloseTo(53 * 1.4, 2);
+    expect(gooseberryNutrients.fibre).toBeNull();
   });
 });
 
 describe('evaluatePlate (scoring logic & no-data handling)', () => {
-  const catalog = deriveCropAvailability(dataset, localNames);
+  const catalog = deriveCropAvailability(dataset, localNames, portions.portions);
 
   it('returns empty state with null overall score when plate has no items', () => {
     const result = evaluatePlate(
@@ -137,9 +158,9 @@ describe('evaluatePlate (scoring logic & no-data handling)', () => {
   });
 
   it('excludes nutrients with no data across all plate items instead of scoring them as zero', () => {
-    // Naranjilla has verified energy & protein, but NO fibre, iron, or calcium
+    // Cape gooseberry has verified energy, protein, iron and calcium, but NO fibre
     const result = evaluatePlate(
-      [{ cropId: 'naranjilla', servings: 1 }],
+      [{ cropId: 'cape-gooseberry', servings: 1 }],
       catalog.byId,
       portions.portions,
       lunchScenario,
@@ -147,29 +168,28 @@ describe('evaluatePlate (scoring logic & no-data handling)', () => {
     );
 
     expect(result.isEmpty).toBe(false);
-    expect(result.scoredNutrientCount).toBe(2);
-    expect(result.excludedNutrientCount).toBe(3);
+    expect(result.scoredNutrientCount).toBe(4);
+    expect(result.excludedNutrientCount).toBe(1);
 
-    for (const missing of ['fibre', 'iron', 'calcium'] as const) {
-      expect(result.nutrients[missing].status).toBe('no_data');
-      expect(result.nutrients[missing].total).toBeNull();
-      expect(result.nutrients[missing].score).toBeNull();
-      expect(result.nutrients[missing].missingDataCropIds).toEqual(['naranjilla']);
-    }
+    expect(result.nutrients.fibre.status).toBe('no_data');
+    expect(result.nutrients.fibre.total).toBeNull();
+    expect(result.nutrients.fibre.score).toBeNull();
+    expect(result.nutrients.fibre.missingDataCropIds).toEqual(['cape-gooseberry']);
 
-    // Overall score must average ONLY the 2 nutrients with data, not divide by 5
-    const expectedAvg = Math.round(
-      ((result.nutrients.energy.score ?? 0) + (result.nutrients.protein.score ?? 0)) / 2
+    // Overall score must average ONLY the 4 nutrients with data, not divide by 5
+    const scoredWithData = (['energy', 'protein', 'iron', 'calcium'] as const).map(
+      (n) => result.nutrients[n].score ?? 0
     );
+    const expectedAvg = Math.round(scoredWithData.reduce((sum, score) => sum + score, 0) / 4);
     expect(result.overallScore).toBe(expectedAvg);
   });
 
   it('flags partial data when some plate items have data and others lack data for a nutrient', () => {
-    // Quinoa has calcium (47 mg/100 g raw); potato lacks calcium
+    // Quinoa has fibre (7.0 g/100 g raw); cape gooseberry lacks fibre
     const result = evaluatePlate(
       [
         { cropId: 'quinoa', servings: 1 },
-        { cropId: 'potato', servings: 1 },
+        { cropId: 'cape-gooseberry', servings: 1 },
       ],
       catalog.byId,
       portions.portions,
@@ -177,9 +197,9 @@ describe('evaluatePlate (scoring logic & no-data handling)', () => {
       referenceIntakes
     );
 
-    expect(result.nutrients.calcium.status).not.toBe('no_data');
-    expect(result.nutrients.calcium.hasPartialData).toBe(true);
-    expect(result.nutrients.calcium.missingDataCropIds).toEqual(['potato']);
+    expect(result.nutrients.fibre.status).not.toBe('no_data');
+    expect(result.nutrients.fibre.hasPartialData).toBe(true);
+    expect(result.nutrients.fibre.missingDataCropIds).toEqual(['cape-gooseberry']);
     // Energy is present on both, so no partial data
     expect(result.nutrients.energy.hasPartialData).toBe(false);
     expect(result.nutrients.energy.missingDataCropIds).toEqual([]);
