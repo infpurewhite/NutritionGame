@@ -16,11 +16,12 @@ repository; see `plato-andino/SOURCE.txt` there).
 | Item | State |
 | --- | --- |
 | Dataset snapshot copied, validated and loaded (v0.6.0) | Done, tested on the real file |
-| Playable/locked derivation | Done: all 35 crops verified; the 9 with sourced portions are playable, 26 wait for a portion |
+| Playable/locked derivation | Done: all 35 crops verified; the 18 with sourced portions are playable, 17 wait for a portion |
 | Scoring on the five nutrients, with "no data" handling | Done, tested |
 | Portion layer (as-eaten serving from raw per-100 g values) | Done, tested |
 | Spanish and English string tables; Spanish food names from the dataset (`names.es`) | Done, tested |
-| Reference intakes, serving sizes, cooked-yield factors, scenario | Copied from version A with their citations (see below) |
+| Reference intakes, scenario | Copied from version A with their citations (see below) |
+| Serving sizes and cooked-yield factors | 9 copied from version A; 9 from the INS tables (2016) (see below) |
 | Deployment | Published at <https://anniececy.com/plato-andino/version-b/> |
 
 `npm run build` fails if any data file is missing, fails its schema, or lacks
@@ -39,6 +40,22 @@ game's About screen shows it. Points to keep in mind:
   activity level, not single published figures.
 - The meal share (lunch = one third of the daily intakes) is a design choice
   in version A with no external source.
+
+### Portions from the INS tables
+
+The portions for mashua, oca, olluco, yacón, ají amarillo, granadilla, lúcuma,
+pacay and tuna come from Domínguez Curi and Avilés Arias (2016) *Tablas
+auxiliares para la formulación y evaluación de regímenes alimentarios*, 2nd
+edn, Lima: Instituto Nacional de Salud (<https://hdl.handle.net/20.500.14196/989>):
+
+- serving = one INS household unit (Table I), using its net (edible) weight;
+- cooked foods use the Table II cooked-to-raw factor (raw = cooked x factor),
+  so the game's yield factor is 1 / factor;
+- foods eaten raw use a yield factor of 1.0.
+
+Each entry in `data/game/portions.json` cites the table code and page. The other
+17 crops are not in the INS tables (or only as a different product, such as
+chuño flour), so they stay locked until another source is added.
 
 ## Run it
 

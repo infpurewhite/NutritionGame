@@ -1,6 +1,6 @@
 {
   "provenance": {
-    "citation": "Copied from version A of this game: NutritionGame, commit f847454, src/data/portions.json. Values and citations as written there; not checked independently against the original sources.",
+    "citation": "The portions for quinoa, kiwicha, potato, lima-bean, common-bean, peanut, cherimoya, naranjilla and cape-gooseberry are copied from version A of this game: NutritionGame, commit f847454, src/data/portions.json, values and citations unchanged and not checked independently. The other portions come from INS (2016), cited on each entry.",
     "url": "https://github.com/infpurewhite/NutritionGame/blob/f847454af1c98ec31bb151622907510254bab7fe/src/data/portions.json"
   },
   "portions": {
@@ -181,6 +181,210 @@
       },
       "yieldSource": {
         "citation": "Eaten raw/fresh without cooking; cooked-yield factor = 1.00."
+      },
+      "assumption": true
+    },
+    "mashua": {
+      "servingGramsAsEaten": 56.2,
+      "cookedYieldFactor": 0.9009,
+      "state": "cooked",
+      "preparedState": {
+        "es": "sancochada",
+        "en": "boiled"
+      },
+      "householdMeasure": {
+        "es": "1 mashua mediana",
+        "en": "1 medium mashua"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 12-33, Mashua, unidad mediana: net (edible) weight 62.4 g raw, p. 70. As eaten: 62.4 g / 1.11 (Table II) = 56.2 g boiled."
+      },
+      "yieldSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table II, Mashua, sancochada: cooked-to-raw factor 1.11, p. 83. Yield factor = 1 / 1.11."
+      },
+      "assumption": true
+    },
+    "oca": {
+      "servingGramsAsEaten": 39.5,
+      "cookedYieldFactor": 1.0101,
+      "state": "cooked",
+      "preparedState": {
+        "es": "sancochada",
+        "en": "boiled"
+      },
+      "householdMeasure": {
+        "es": "1 oca mediana (10 cm)",
+        "en": "1 medium oca (10 cm)"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 12-36, Oca, unidad mediana (10 cm): net (edible) weight 39.1 g raw, p. 70. As eaten: 39.1 g / 0.99 (Table II) = 39.5 g boiled."
+      },
+      "yieldSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table II, Oca, entero, sancochado: cooked-to-raw factor 0.99, p. 83. Yield factor = 1 / 0.99."
+      },
+      "assumption": true
+    },
+    "ulluco": {
+      "servingGramsAsEaten": 128.7,
+      "cookedYieldFactor": 0.9524,
+      "state": "cooked",
+      "preparedState": {
+        "es": "en juliana, sancochado",
+        "en": "cut in thin strips, boiled"
+      },
+      "householdMeasure": {
+        "es": "1 taza llena de olluco picado (crudo)",
+        "en": "1 full cup of cut olluco (raw)"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 12-42, Olluco, picado tipo juliana, taza de acero llena: net weight 135.1 g raw, p. 71. As eaten: 135.1 g / 1.05 (Table II) = 128.7 g boiled."
+      },
+      "yieldSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table II, Olluco, picado tipo juliana, sancochado: cooked-to-raw factor 1.05, p. 83. Yield factor = 1 / 1.05."
+      },
+      "assumption": true
+    },
+    "yacon": {
+      "servingGramsAsEaten": 215.4,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "fresco, pelado",
+        "en": "fresh, peeled"
+      },
+      "householdMeasure": {
+        "es": "1 yacón mediano",
+        "en": "1 medium yacón"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 12-72, Yacón, unidad mediana: net (edible) weight 215.4 g, 89% edible, p. 72."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
+      },
+      "assumption": true
+    },
+    "aji-amarillo": {
+      "servingGramsAsEaten": 46.3,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "fresco",
+        "en": "fresh"
+      },
+      "householdMeasure": {
+        "es": "1 ají amarillo mediano",
+        "en": "1 medium ají amarillo"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 2-3, Ají amarillo, unidad mediana: net (edible) weight 46.3 g, 79% edible, p. 24."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
+      },
+      "assumption": true
+    },
+    "granadilla": {
+      "servingGramsAsEaten": 67.4,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca con pepas",
+        "en": "fresh pulp with seeds"
+      },
+      "householdMeasure": {
+        "es": "1 granadilla mediana",
+        "en": "1 medium granadilla"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 3-35, Granadilla, unidad mediana: net weight 67.4 g as pulp with seeds (footnote Θ1 \"jugo con pepas\", p. 39), 60% edible, p. 31."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
+      },
+      "assumption": true
+    },
+    "lucuma": {
+      "servingGramsAsEaten": 161.0,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca",
+        "en": "fresh pulp"
+      },
+      "householdMeasure": {
+        "es": "1 lúcuma mediana",
+        "en": "1 medium lúcuma"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 3-56, Lúcuma seda (Beltrán), unidad mediana: net (edible) weight 161.0 g, 80% edible, p. 33."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
+      },
+      "assumption": true
+    },
+    "pacay": {
+      "servingGramsAsEaten": 40.0,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca",
+        "en": "fresh pulp"
+      },
+      "householdMeasure": {
+        "es": "1 vaina mediana de pacay (30 cm)",
+        "en": "1 medium pacay pod (30 cm)"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 3-120, Pacae, unidad mediana 30 cm: net (edible) weight 40.0 g, 31% edible, p. 36 (a measure INS carried over from its 1985 edition, marked *)."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
+      },
+      "assumption": true
+    },
+    "tuna": {
+      "servingGramsAsEaten": 80.7,
+      "cookedYieldFactor": 1.0,
+      "state": "uncooked",
+      "preparedState": {
+        "es": "pulpa fresca",
+        "en": "fresh pulp"
+      },
+      "householdMeasure": {
+        "es": "1 tuna mediana",
+        "en": "1 medium prickly pear"
+      },
+      "servingSource": {
+        "citation": "Domínguez Curi, C.H. and Avilés Arias, D.A. (2016) Tablas auxiliares para la formulación y evaluación de regímenes alimentarios. 2nd edn. Lima: Instituto Nacional de Salud. ISBN 978-612-310-093-3.",
+        "url": "https://hdl.handle.net/20.500.14196/989",
+        "locator": "Table I, code 3-168, Tuna roja, unidad mediana: net (edible) weight 80.7 g, 57% edible, p. 39."
+      },
+      "yieldSource": {
+        "citation": "Eaten raw: no cooking, so the as-eaten weight equals the raw weight (yield factor 1.0)."
       },
       "assumption": true
     }

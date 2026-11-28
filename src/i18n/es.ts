@@ -71,7 +71,7 @@ export const es: Readonly<Record<StringKey, string>> = {
   'about.portions.yieldSource': 'Factor de rendimiento:',
   'about.provenance.heading': 'Origen de las metas y las porciones',
   'about.provenance.body':
-    'Las ingestas de referencia, los tamaños de porción y el escenario están copiados de la versión A de este juego, con sus citas. No se han contrastado de forma independiente con las fuentes originales.',
+    'Las ingestas de referencia, el escenario y los tamaños de porción de los nueve primeros alimentos están copiados de la versión A de este juego, con sus citas, y no se han contrastado de forma independiente con las fuentes originales. Los demás tamaños de porción provienen de las tablas del INS del Perú (2016), citadas en cada alimento.',
   'about.licence.heading': 'Licencias',
   'about.licence.body': 'Código: MIT. Contenido y textos del juego: CC BY 4.0.',
 };

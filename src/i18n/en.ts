@@ -66,7 +66,7 @@ export const en = {
   'about.portions.yieldSource': 'Yield factor:',
   'about.provenance.heading': 'Where the targets and portions come from',
   'about.provenance.body':
-    'The reference intakes, portion sizes and scenario are copied from version A of this game, with their citations. They have not been checked independently against the original sources.',
+    'The reference intakes, the scenario and the portion sizes of the first nine foods are copied from version A of this game, with their citations, and have not been checked independently against the original sources. The other portion sizes come from the Peruvian INS tables (2016), cited on each food.',
   'about.licence.heading': 'Licences',
   'about.licence.body': 'Code: MIT. Game content and text: CC BY 4.0.',
 } as const;

@@ -10,6 +10,7 @@ interface Props {
 }
 
 export function FoodList({ t, locale, foods, plate, onChange }: Props) {
+  const grams = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
   const playable = foods.filter((food): food is PlayableFood => food.status === 'playable');
   const locked = foods.filter((food): food is LockedFood => food.status === 'locked');
 
@@ -26,7 +27,7 @@ export function FoodList({ t, locale, foods, plate, onChange }: Props) {
                 <h3>{name}</h3>
                 <p class="muted">
                   {t('foods.portion', {
-                    grams: food.portion.servingGramsAsEaten,
+                    grams: grams.format(food.portion.servingGramsAsEaten),
                     state:
                       food.portion.preparedState?.[locale] ?? t(`foods.state.${food.portion.state}`),
                   })}
