@@ -164,6 +164,12 @@ export const STRINGS: Record<Locale, StringTable> = {
       legume: 'Legumbre',
       fruit: 'Fruta',
       'capsicum-spice': 'Ají / condimento',
+      // Keys used by the dataset's crop_group field
+      root_tuber: 'Raíz o tubérculo',
+      grain_legume: 'Leguminosa',
+      vegetable: 'Hortaliza',
+      oilseed: 'Oleaginosa',
+      cyanobacterium: 'Cianobacteria',
     },
 
     disclaimerBanner:
@@ -264,6 +270,12 @@ export const STRINGS: Record<Locale, StringTable> = {
       legume: 'Legume',
       fruit: 'Fruit',
       'capsicum-spice': 'Chilli / spice',
+      // Keys used by the dataset's crop_group field
+      root_tuber: 'Root or tuber',
+      grain_legume: 'Grain legume',
+      vegetable: 'Vegetable',
+      oilseed: 'Oilseed',
+      cyanobacterium: 'Cyanobacterium',
     },
 
     disclaimerBanner: 'Prototype — for research and teaching, not dietary or medical advice.',
